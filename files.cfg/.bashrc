@@ -48,7 +48,8 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-
+# change this -by hgj
+color_prompt=yes
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
@@ -100,5 +101,24 @@ fi
 ############################## add your own ####################
 #export PS1="\e[0;31m[\u@\h \w]\\$ \e[m"
 clear
-echo "########## Welcome to the root ##############"
+echo -e "${BLUE}##########${NOCOLOR} ${RED}Welcome root${NOCOLOR} ${BLUE}##############${NOCOLOR}"
 set -o vi
+############### for the ssh ##########
+if [ -f ~/.bash_config_add/.bash_ssh ]; then
+    . ~/.bash_config_add/.bash_ssh
+fi
+    
+## add the computer's host in here
+#export hgj_pc=root@172.27.53.192
+#export scut_M5000=root@172.28.93.165
+#export scut_1080=snr@202.38.214.192
+## use to transmit the file, jsut add the _f
+#export hgj_pc_f=root@172.27.53.192:/home/hgj/ftp
+#export scut_M5000_f=root@172.28.93.165:/home/scut/hgj/ftp
+#export scut_1080_f=snr@202.38.214.192:/home/snr/ftp
+############### for the tmux bash ##########
+if [ -n "$TMUX" ]; then
+    # set the PS1 to the newline
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n '
+fi
+
