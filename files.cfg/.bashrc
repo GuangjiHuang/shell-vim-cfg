@@ -89,7 +89,7 @@ alias l='ls -CF'
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -99,17 +99,18 @@ fi
 #    . /etc/bash_completion
 #fi
 ############################## add your own ####################
-#export PS1="\e[0;31m[\u@\h \w]\\$ \e[m"
-clear
-echo -e "${BLUE}==========${NOCOLOR} ${RED}Welcome root${NOCOLOR} ${BLUE}==============${NOCOLOR}"
-set -o vi
 ############### loop to execute the file in the .bash_config_add ##########
 bash_config_add_path=~/.bash_config_add
 for file in $bash_config_add_path/.bash* 
 do
     #echo "file: ${file}"
-    . $file
+    . ${file}
 done
+############################## echo the promote(that has the color) ####################
+#export PS1="\e[0;31m[\u@\h \w]\\$ \e[m"
+clear
+echo -e "${BLUE}==========${NOCOLOR} ${RED}Welcome root${NOCOLOR} ${BLUE}==============${NOCOLOR}"
+set -o vi
 
 ############### for the tmux bash ##########
 if [ -n "$TMUX" ]; then
