@@ -103,11 +103,14 @@ fi
 clear
 echo -e "${BLUE}==========${NOCOLOR} ${RED}Welcome root${NOCOLOR} ${BLUE}==============${NOCOLOR}"
 set -o vi
-############### for the ssh ##########
-if [ -f ~/.bash_config_add/.bash_ssh ]; then
-    . ~/.bash_config_add/.bash_ssh
-fi
-    
+############### loop to execute the file in the .bash_config_add ##########
+bash_config_add_path=~/.bash_config_add
+for file in $bash_config_add_path/.bash* 
+do
+    #echo "file: ${file}"
+    . $file
+done
+
 ############### for the tmux bash ##########
 if [ -n "$TMUX" ]; then
     # set the PS1 to the newline
