@@ -31,7 +31,7 @@ set showcmd         " show partial command in status line
 "set showmatch       " show matching brackets.
 set ignorecase      " Do case insensitive matching
 set smartcase       " Do smart case matching
-set autowrite       " Automatically save before commands like :next and :make
+"set autowrite       " Automatically save before commands like :next and :make
 set hidden          " Hide buffers when they are abandoned
 set mouse=a         " Enable mouse usage (all mouse)
 
@@ -135,6 +135,11 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
+"Plugin 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+"Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'iamcco/markdown-preview.vim'
+Plugin 'instant-markdown/vim-instant-markdown'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -152,7 +157,6 @@ filetype plugin indent on    " required
 "  ---------------------------------------------------------------
 "  **********************about the markdown_preview setting
 "  ---------------------------------------------------------------
-Plugin 'iamcco/markdown-preview.nvim'
 
 
 
