@@ -78,6 +78,12 @@ set cursorlineopt=number
 set background=dark
 set t_Co=256
 
+"about the file's encoding
+set fencs=utf-8,big5,gb18030,utf-16
+
+"about the fold in the file
+set foldmethod=marker "will creat the {{{}}} as the fold marker
+
 "  ---------------------------------------------------------------
 "  ********************** cursor's shape and the color **********
 "  ---------------------------------------------------------------
