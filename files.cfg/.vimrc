@@ -84,6 +84,15 @@ set fencs=utf-8,big5,gb18030,utf-16
 "about the fold in the file
 set foldmethod=marker "will creat the {{{}}} as the fold marker
 
+"about show the space, tab and the efl
+"set listchars=tab:\|\ 
+"set listchars=tab:\┊\ 
+""set listchars=tab:\┆\ 
+"set listchars=tab:\¦\ 
+"set list
+set listchars+=tab:\|\
+set listchars+=space:.
+
 "  ---------------------------------------------------------------
 "  ********************** cursor's shape and the color **********
 "  ---------------------------------------------------------------
@@ -164,7 +173,14 @@ filetype plugin indent on    " required
 "  **********************about the markdown_preview setting
 "  ---------------------------------------------------------------
 
-
+"  ---------------------------------------------------------------
+"  **********************about the txtfmt setting
+"  ---------------------------------------------------------------
+"  to slove the map ambiguity, to use the default instead of the txtfmt
+"  this may be very important
+let g:txtfmtMapwarn = 'c'
+"about the ft(filetype) based on the file's extension, such as the *.cpp, *.py, and so on 
+au! BufRead,BufNewFile *.goal,*.txt set ft=txtfmt
 
 "  ---------------------------------------------------------------
 "  **********************abou the command set**********
@@ -172,4 +188,33 @@ filetype plugin indent on    " required
 :command W w
 :command T Ntree
 :command NT NERDTree
-
+"  ---------------------------------------------------------------
+"  ********************** the test setting (provisonal) **********
+"  ---------------------------------------------------------------
+au! BufWritePre *.html :normal gg=G
+au FileType cpp,c nnoremap <buffer> <localleader>c I//<esc>
+au FileType python nnoremap <buffer> <localleader>c I#<esc>
+" you can serach" < How can I emulate key press on Vim startup? > " in the
+" google
+"funciton: when you open the file, press the zz automatically in the vim, that is very useful
+"au BufRead *.goal :execute "normal zz" 
+"au BufRead *.txt :execute "normal z\<Cr>"
+au BufRead,BufNewFile *.txt,*.goal,*.pratice :execute "normal Gz\<Cr>o"
+"--------------------------------------------------------------------------------
+" Automatically open the quickfix window on: make
+"--------------------------------------------------------------------------------
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" location list window, or close it when is has become empty.
+"
+" Note: Must allow nesting of autocmds to enable any customizations for quickfix
+" buffers.
+" Note: Normally, :cwindow jumps to the quickfix window if the command opens it
+" (but not if it's already open). However, as part of the autocmd, this doesn't
+" seem to happen.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+"autocmd QuickFixCmdPost [^l]* nested copen "always open the quickfix
+autocmd QuickFixCmdPost    l* nested lwindow
+"nnoremap <leader>m :silent make %\|redraw!cw<CR>
+nnoremap <leader>m :make %<CR>
+set makeprg=g++
+"nnoremap <leader>m :!g++ -o %< %<enter><CR>

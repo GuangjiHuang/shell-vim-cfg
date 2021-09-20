@@ -2,7 +2,8 @@
 # author: hgj
 # server's hostname and the ip adress
 
-export dear_pc='root@202.38.214.122'
+export dear_pc='root@202.38.214.122' # connect the wire network
+#export dear_pc='root@202.38.214.220 -p 221' # connect the wifi, set the router port: 221
 export hgj_pc='root@172.27.53.192'
 
 #export scut_M5000='root@172.28.4.192'
