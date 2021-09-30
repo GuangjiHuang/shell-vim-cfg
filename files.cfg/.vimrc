@@ -1,4 +1,3 @@
-"  HERE is the custom
 "  ---------------------------------------------------------------
 "  **********************set my own variable in the vim **********
 "  ---------------------------------------------------------------
@@ -93,6 +92,12 @@ set foldmethod=marker "will creat the {{{}}} as the fold marker
 set listchars+=tab:\|\
 set listchars+=space:.
 
+" set the status
+"set statusline=\PATH:\ %r%F\ \ \ \ \LINE:\ %l/%L/%P\ TIME:\ %{strftime('%c')}
+set ruler
+"set rulerformat=%55(%{strftime('%F\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
+set rulerformat=%36(%{strftime('%F\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
+
 "  ---------------------------------------------------------------
 "  ********************** cursor's shape and the color **********
 "  ---------------------------------------------------------------
@@ -153,7 +158,10 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Plugin 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 "Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'iamcco/markdown-preview.vim'
-Plugin 'instant-markdown/vim-instant-markdown'
+"Plugin 'instant-markdown/vim-instant-markdown'
+Plugin 'file:///home/hgj/.vim/bundle/vim-instant-markdown'
+" add the vim-markdown-composer(github.com/ecuclio/vim-markdown-composer)
+"Plugin 'euclio/vim-markdown-composer'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -180,18 +188,60 @@ filetype plugin indent on    " required
 "  this may be very important
 let g:txtfmtMapwarn = 'c'
 "about the ft(filetype) based on the file's extension, such as the *.cpp, *.py, and so on 
-au! BufRead,BufNewFile *.goal,*.txt set ft=txtfmt
+au BufRead,BufNewFile *.goal,*.txt,*.ddl set nocindent
+au BufRead,BufNewFile *.goal,*.txt,*.ddl set ft=txtfmt
+
+"  ---------------------------------------------------------------
+"  **********************about the Goyo setting
+"  ---------------------------------------------------------------
+" slove the problem that leave the goyo will change the colortheme
+"autocmd! User GoyoLeave source $HOME/.vimrc
+"autocmd! User GoyoEnter source $HOME/.vimrc
+augroup goyo_control
+    autocmd!
+    au User GoyoLeave set bg=dark "the problem that change the colorscheme
+    au User GoyoEnter set number
+    au User GoyoEnter :so /home/hgj/.vim/pack/others/start/vim-numbertoggle/plugin/number_toggle.vim "the problem that numberline
+augroup END
+
+nnoremap <leader>f :Goyo 60%x100%<Cr>
+" <<< bug generate >>>
+"autocmd VimResized * source $HOME/.vimrc
+"
+" to solve the problem of the Goyo <https://github.com/junegunn/goyo.vim/issues/42>
+" << Fail to slove the problem >>
+" the colortheme and the line number
+" augroup goyo
+"   autocmd!
+"   autocmd VimResized * source $HOME/.vimrc
+"    autocmd BufWinLeave <buffer> call s:goyo_off()
+"    autocmd TabLeave    *        call s:goyo_off()
+"    autocmd VimResized  *        call s:resize_pads()
+"    autocmd ColorScheme *        call s:tranquilize()
+"    autocmd InsertEnter * :set nonumber
+"    autocmd InsertLeave * :set norelativenumber
+" augroup END
+
+"  ---------------------------------------------------------------
+"  **********************about the limelight setting
+"  ---------------------------------------------------------------
+let g:limelight_conceal_ctermfg = 0
+nnoremap <leader>l :Limelight!!<Cr>
+autocmd User GoyoEnter Limelight
+autocmd User GoyoLeave Limelight!
+
 
 "  ---------------------------------------------------------------
 "  **********************abou the command set**********
 "  ---------------------------------------------------------------
+"
 :command W w
 :command T Ntree
 :command NT NERDTree
 "  ---------------------------------------------------------------
 "  ********************** the test setting (provisonal) **********
 "  ---------------------------------------------------------------
-au! BufWritePre *.html :normal gg=G
+au BufWritePre *.html :normal gg=G
 au FileType cpp,c nnoremap <buffer> <localleader>c I//<esc>
 au FileType python nnoremap <buffer> <localleader>c I#<esc>
 " you can serach" < How can I emulate key press on Vim startup? > " in the
@@ -199,7 +249,7 @@ au FileType python nnoremap <buffer> <localleader>c I#<esc>
 "funciton: when you open the file, press the zz automatically in the vim, that is very useful
 "au BufRead *.goal :execute "normal zz" 
 "au BufRead *.txt :execute "normal z\<Cr>"
-au BufRead,BufNewFile *.txt,*.goal,*.pratice :execute "normal Gz\<Cr>o"
+au BufRead,BufNewFile *.txt,*.goal,*.pratice :execute "normal Gz\<Cr>"
 "--------------------------------------------------------------------------------
 " Automatically open the quickfix window on: make
 "--------------------------------------------------------------------------------

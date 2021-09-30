@@ -15,6 +15,7 @@ fi
 alias p='. p'
 alias wr='. wr'
 alias mygit='. mygit'
+alias love='. love'
 alias c-='wr -c' #copy the current path to the /dev/clipboard
 alias v-='wr -v' #show the /dev/clipboard to the terminal
 
@@ -47,3 +48,7 @@ alias into='tmux attach -t $1'
 
 #  ************************** typora and the when-changed ****************************
 #alias preview_md='when-changed /cygwin/d/Typora/Typora.exe 
+
+#  ************************** the vifm.exe ****************************
+alias vifm='c:/Users/97682/Downloads/vifm-w32-se-0.12-binary/vifm.exe $(cygpath -w $(pwd))'
+

@@ -36,6 +36,7 @@ export ftp=/home/*/ftp
 #alias c-s='ssh -p 1314 ${scut_M5000}'
 alias c-dear='ssh ${dear_pc}'
 alias c-s='ssh ${scut_M5000}'
+alias c_s='c-s' # to solve the problem of the confilct of the ctrl + c in the tmux
 alias c-s1='ssh ${scut_1080}'
 alias c-s2='ssh ${scut_2080}'
 alias c-s3='ssh ${scut_3080}'
