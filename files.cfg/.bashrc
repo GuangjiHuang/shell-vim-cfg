@@ -108,7 +108,7 @@ do
 done
 ############################## echo the promote(that has the color) ####################
 #export PS1="\e[0;31m[\u@\h \w]\\$ \e[m"
-clear
+#clear
 echo -e "${BLUE}==========${NOCOLOR} ${RED}Welcome root${NOCOLOR} ${BLUE}==============${NOCOLOR}"
 set -o vi
 ############## change the inline shell(the option in the set and the shopt)####################
@@ -121,6 +121,11 @@ shopt -s globstar
 if [ -n "$TMUX" ]; then
     # set the PS1 to the newline
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n '
+    # execute the file of the mode control
+    mode_control_file_path=/opt/myscript/tmux-manager/mode_control.sh
+    if [ -f $mode_control_file_path ];then
+        source $mode_control_file_path
+    fi
 fi
 
 ############### add the newline if the PS1 is too long ##########
