@@ -127,6 +127,15 @@ if [ -n "$TMUX" ]; then
         source $mode_control_file_path
     fi
 fi
+# switch to the another session by the name
+tn()
+{
+    if [ -n "$1" ];then
+        tmux switch -t $1
+    else
+        echo "No session name!"
+    fi
+}
 
 ############### add the newline if the PS1 is too long ##########
 cout_path=$(pwd | wc -m)
