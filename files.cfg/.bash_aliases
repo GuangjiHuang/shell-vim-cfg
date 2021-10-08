@@ -19,13 +19,18 @@ alias love='. love'
 alias c-='wr -c' #copy the current path to the /dev/clipboard
 alias v-='wr -v' #show the /dev/clipboard to the terminal
 
-# >> This may be somebit verbose 
+# >> This may be somebit verbose for the wr
 alias go-b='wr -v b go' # go to the bash_test
 alias go-c='wr -v c go' # go to the c++_test
 alias go-j='wr -v j go' # go to the java_test
 alias go-p='wr -v p go' # go to the python_test
 alias go-m='wr -v m go' # go the the markdown_test
 alias go-v='wr -v v go' # go to the vim_test
+# << verbose ...
+
+# >> This may be somebit verbose for the love
+alias *='love action'
+alias @='love you'
 # << verbose ...
 
 #  **************************** the other app ****************************

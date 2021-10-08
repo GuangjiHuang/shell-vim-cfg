@@ -120,7 +120,7 @@ shopt -s globstar
 ############### for the tmux bash ##########
 if [ -n "$TMUX" ]; then
     # set the PS1 to the newline
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n '
     # execute the file of the mode control
     mode_control_file_path=/opt/myscript/tmux-manager/mode_control.sh
     if [ -f $mode_control_file_path ];then
