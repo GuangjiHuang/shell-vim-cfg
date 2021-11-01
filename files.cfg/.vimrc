@@ -97,7 +97,8 @@ set listchars+=space:.
 set ruler
 "set rulerformat=%55(%{strftime('%F\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 set rulerformat=%36(%{strftime('%F\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
-
+" set the isfilename to get ride of the = character;
+set isfname=@,48-57,/,.,-,_,+,,,#,$,%,~
 "  ---------------------------------------------------------------
 "  ********************** cursor's shape and the color **********
 "  ---------------------------------------------------------------
@@ -189,7 +190,7 @@ filetype plugin indent on    " required
 let g:txtfmtMapwarn = 'c'
 "about the ft(filetype) based on the file's extension, such as the *.cpp, *.py, and so on 
 au BufRead,BufNewFile *.goal,*.txt,*.ddl set nocindent
-au BufRead,BufNewFile *.goal,*.txt,*.ddl set ft=txtfmt
+au BufRead,BufNewFile *.goal,[^C]*.txt,*.ddl set ft=txtfmt
 
 "  ---------------------------------------------------------------
 "  **********************about the Goyo setting
@@ -249,7 +250,7 @@ au FileType python nnoremap <buffer> <localleader>c I#<esc>
 "funciton: when you open the file, press the zz automatically in the vim, that is very useful
 "au BufRead *.goal :execute "normal zz" 
 "au BufRead *.txt :execute "normal z\<Cr>"
-au BufRead,BufNewFile *.txt,*.goal,*.pratice :execute "normal Gz\<Cr>"
+au BufRead,BufNewFile *.txt,*.goal,*.pratice :execute "normal zz\<Cr>"
 "--------------------------------------------------------------------------------
 " Automatically open the quickfix window on: make
 "--------------------------------------------------------------------------------
@@ -268,3 +269,20 @@ autocmd QuickFixCmdPost    l* nested lwindow
 nnoremap <leader>m :make %<CR>
 set makeprg=g++
 "nnoremap <leader>m :!g++ -o %< %<enter><CR>
+"
+"--------------------------------------------------------------------------------
+" switch the cpp <-> h
+"--------------------------------------------------------------------------------
+nnoremap <leader>% :call FindHeader()<CR>
+function! FindHeader()
+    let targetfile = ""
+    if expand("%:e") == "h"
+        let targetfile = expand("%:t:r") . ".cpp"
+    else
+        let targetfile = expand("%:t:r") . ".h"
+    endif
+    for onefile in findfile(targetfile, "**", -1)
+        silent exe ":e " . onefile
+    endfor
+endfunction
+
