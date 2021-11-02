@@ -288,10 +288,14 @@ function! FindHeader()
         let targetfile_cpp = expand("%:t:r") . ".hpp"
     endif
     "
-    let targetfile_c = findfile(targetfile_c, "**,../../**", -1)
-    let targetfile_cpp = findfile(targetfile_cpp, "**,../../**", -1)
+    let targetfile_c = findfile(targetfile_c, "**", -1)
+    let targetfile_cpp = findfile(targetfile_cpp, "**", -1)
+    let targetfile = targetfile_c + targetfile_cpp
+    if empty(targetfile)
+        let targetfile = findfile(targetfile_c, "../../**", -1)
+        let targetfile += findfile(targetfile_cpp, "../../**", -1)
+    endif
     "
-    let targetfile =  targetfile_c + targetfile_cpp
     if empty(targetfile)
         echo "Not found!"
     else
