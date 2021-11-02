@@ -21,6 +21,9 @@ nnoremap [2 :b2<Enter>  " b2
 nnoremap [3 :b3<Enter>  " b3
 nnoremap [4 :b4<Enter>  " b4
 nnoremap [5 :b5<Enter>  " b5
+
+" to source the .vimrc
+nnoremap <leader>s :source ~/.vimrc "\| echom "->Source the ~/.vimrc"<CR>
 "
 "  ---------------------------------------------------------------
 "  **********************   the set comand ************************
@@ -275,14 +278,28 @@ set makeprg=g++
 "--------------------------------------------------------------------------------
 nnoremap <leader>% :call FindHeader()<CR>
 function! FindHeader()
-    let targetfile = ""
-    if expand("%:e") == "h"
-        let targetfile = expand("%:t:r") . ".cpp"
+    let targetfile_c =""
+    let targetfile_cpp =""
+    if expand("%:e") == "h" || expand("%:e") == "hpp"
+        let targetfile_c = expand("%:t:r") . ".c"
+        let targetfile_cpp = expand("%:t:r") . ".cpp"
     else
-        let targetfile = expand("%:t:r") . ".h"
+        let targetfile_c = expand("%:t:r") . ".h"
+        let targetfile_cpp = expand("%:t:r") . ".hpp"
     endif
-    for onefile in findfile(targetfile, "**", -1)
-        silent exe ":e " . onefile
-    endfor
+    "
+    let targetfile_c = findfile(targetfile_c, "**,../../**", -1)
+    let targetfile_cpp = findfile(targetfile_cpp, "**,../../**", -1)
+    "
+    let targetfile =  targetfile_c + targetfile_cpp
+    if empty(targetfile)
+        echo "Not found!"
+    else
+        for onefile in targetfile
+            silent exe ":e " . onefile
+        endfor
+        "echon "Found " . len(targetfile) . " files"
+        echo "->" . onefile
+    endif
 endfunction
 
