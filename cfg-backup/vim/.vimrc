@@ -143,4 +143,5 @@ endfunction
 " source my own function
 source ~/.vim/hgj-vim-config/func.vim
 source ~/.vim/hgj-vim-config/map.vim
-source ~/.vim/hgj-vim-config/plugin_setting.vim
+source ~/.vim/hgj-vim-config/plugin-setting.vim
+" new test by hgj
