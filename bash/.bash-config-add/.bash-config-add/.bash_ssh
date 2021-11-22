@@ -1,0 +1,52 @@
+# the bash_ssh: to control the ssh connetct, and maintain it
+# author: hgj
+# server's hostname and the ip adress
+
+export dear_pc='root@202.38.214.122' # connect the wire network
+#export dear_pc='root@202.38.214.220 -p 221' # connect the wifi, set the router port: 221
+export hgj_pc='root@172.27.51.182'
+
+#export scut_M5000='root@172.28.4.192'
+# connect the routs
+#export scut_M5000='root@202.38.214.121'
+export scut_M5000='root@202.38.214.221'
+export scut_1080='snr@202.38.214.192'
+export scut_2080='scut@202.38.214.111'
+export scut_3080='scut@218.192.172.108'
+
+export tx2='root@202.38.214.222'
+
+# use to transmit the file, jsut add the _f
+export dear_pc_f=${dear_pc}:/home/*/ftp
+export hgj_pc_f=${hgj_pc}:/home/hgj/ftp
+export scut_M5000_f=${scut_M5000}:/home/scut/ftp
+export scut_1080_f=${scut_1080}:/home/snr/ftp
+export tx2_f=${tx2}:/home/nvidia/ftp
+
+# creat the alias for the above
+export gj_f=${hgj_pc_f}
+export s_f=${scut_M5000_f}
+export s1_f=${scut_1080_f}
+
+# quickly go to the ftp
+export ftp=/home/*/ftp
+
+# about the connect, using the alias to shorten them
+# >> the scut_M5000 need the port 1314
+#alias c-s='ssh -p 1314 ${scut_M5000}'
+alias c-dear='ssh ${dear_pc}'
+alias c-s='ssh ${scut_M5000}'
+alias c_s='c-s' # to solve the problem of the confilct of the ctrl + c in the tmux
+alias c-s1='ssh ${scut_1080}'
+alias c-s2='ssh ${scut_2080}'
+alias c-s3='ssh ${scut_3080}'
+alias c-gj='ssh ${hgj_pc}'
+alias c-tx2='ssh ${tx2}'
+
+# aout the openning this file and then renew the ip_adress
+alias ip-c='vim ~/.bash_config_add/.bash_ssh'
+
+#
+# ========================================================
+#echo "Execute the bash_ssh successfully!"
+# ========================================================
