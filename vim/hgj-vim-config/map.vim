@@ -77,13 +77,13 @@ nnoremap <leader>Rc :w \| !. ../run %<CR>
 " vimscript
 nnoremap <leader>rv :w \| source %<CR>
 " python
-nnoremap <leader>rp :w \| !python3 %<CR>
-nnoremap <leader>rP :w \| !python.exe %<CR>
+nnoremap <leader>rp :w \| !clear;python3 %<CR>
+nnoremap <leader>rP :w \| !clear;python.exe %<CR>
 " bash
-nnoremap <leader>rb :w \| !. %<CR>
-nnoremap <leader>rB :w \| !bash %<CR>
+nnoremap <leader>rb :w \| !clear;. %<CR>
+nnoremap <leader>rB :w \| !clear;bash %<CR>
 " cmake
-nnoremap <leader>rm :w \| !cmake -P %<CR>
+nnoremap <leader>rm :w \| !clear;cmake -P %<CR>
 " -------------------------------------------s/S-------------------------------------------
 " \s
 nnoremap <leader>s :source ~/.vimrc "\| echom "->Source the ~/.vimrc"<CR>
