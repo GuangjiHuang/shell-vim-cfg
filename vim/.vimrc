@@ -30,7 +30,7 @@ set fo-=r
 set fo-=c
 
 " c/c++ indent
-set cindent
+au BufRead,BufNewFile *.cpp,*.c,*.h,*.hpp set cindent
 
 " tab key
 "set autoindent " start the newline and will deal the indent

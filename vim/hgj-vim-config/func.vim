@@ -46,7 +46,7 @@ function! IntoCodeEnv(code_language)
     let file_name = ""
     let file_name_suffix = ""
     if a:code_language == "c++"
-        let file_name_suffix = ".c++"
+        let file_name_suffix = ".cpp"
     elseif a:code_language == "vim"
         let file_name_suffix = ".vim"
     elseif a:code_language == "bash"
