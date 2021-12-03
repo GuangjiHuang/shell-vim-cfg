@@ -108,13 +108,12 @@ do
 done
 ############################## echo the promote(that has the color) ####################
 #export PS1="\e[0;31m[\u@\h \w]\\$ \e[m"
-clear
+#clear
 echo -e "${BLUE}==========${NOCOLOR} ${RED}Welcome root${NOCOLOR} ${BLUE}==============${NOCOLOR}"
 set -o vi
 ############## change the inline shell(the option in the set and the shopt)####################
 # turn on this option let you can use the ** to match any directories or the subdirectoies or the files, and the **/ (adding the backslash, that matching any directories or the subdirectories)
 shopt -s globstar 
-
 
 
 ############### for the tmux bash ##########
@@ -128,7 +127,7 @@ if [ -n "$TMUX" ]; then
     fi
 fi
 # switch to the another session by the name
-tn()
+to()
 {
     if [ -n "$1" ];then
         tmux switch -t $1
