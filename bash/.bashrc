@@ -101,11 +101,16 @@ fi
 ############################## add your own ####################
 ############### loop to execute the file in the .bash-config-add ##########
 bash_config_add_path=~/.bash-config-add
-for file in $bash_config_add_path/.bash* 
-do
-    #echo "file: ${file}"
-    . ${file}
-done
+if [ -e $bash_config_add_path ]; then
+    for file in $bash_config_add_path/.bash* 
+    do 
+        # skip of the swap file
+        if [[ $file =~ .*\.swp ]]; then 
+            continue
+        fi
+        . ${file}
+    done
+fi
 ############################## echo the promote(that has the color) ####################
 #export PS1="\e[0;31m[\u@\h \w]\\$ \e[m"
 #clear
