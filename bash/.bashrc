@@ -105,10 +105,9 @@ if [ -e $bash_config_add_path ]; then
     for file in $bash_config_add_path/.bash* 
     do 
         # skip of the swap file
-        if [[ $file =~ .*\.swp ]]; then 
-            continue
+        if ! [[ $file =~ .*\.swp ]] || [ -f $file ]; then 
+            . ${file}
         fi
-        . ${file}
     done
 fi
 ############################## echo the promote(that has the color) ####################
