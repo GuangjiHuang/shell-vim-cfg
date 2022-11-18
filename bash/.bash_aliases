@@ -90,3 +90,6 @@ alias pip3='/cygdrive/d/Python38/Scripts/pip3.exe'
 #  ************************** about the git command ****************************
 alias git_push='git add . && git commit -m "update->$(datef)" && git push'
 alias git_pull='git pull || git fetch --all && git reset --hard origin/master && git pull'
+
+#  ************************** about the inputrc ****************************
+alias readline='bind -f ~/.inputrc'
