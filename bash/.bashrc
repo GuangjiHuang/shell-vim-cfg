@@ -105,7 +105,7 @@ if [ -e $bash_config_add_path ]; then
     for file in $bash_config_add_path/.bash* 
     do 
         # skip of the swap file
-        if ! [[ $file =~ .*\.swp ]] || [ -f $file ]; then 
+        if ! [[ $file =~ .*\.swp ]] && [ -f $file ]; then 
             . ${file}
         fi
     done
