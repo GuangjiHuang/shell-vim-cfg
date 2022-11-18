@@ -70,8 +70,8 @@ set editing-mode vi
 set show-mode-in-prompt on
 #set vi-ins-mode-string "(ins)\1\e[5 q\2"
 #set vi-cmd-mode-string "(cmd)\1\e[1 q\2"
-#set vi-ins-mode-string "(->)\1\e[5 q\2" 
-#set vi-cmd-mode-string "(-^)\1\e[5 q\2"
+set vi-ins-mode-string "\1\e[01;40m\2\1\e[01;33m\2\1\e[5 q\e]12;orange\a\2[Y]\1\e[0m\2"  # cursor: shinning pile-line, orange
+set vi-cmd-mode-string "\1\e[01;40m\2\1\e[01;31m\2\1\e[2 q\e]12;red\a\2[H]\1\e[0m\2" # cursor: still block, red
 #set vi-ins-mode-string \1\e[34;1m\2(ins)\1\e[5 q\2
 #set vi-cmd-mode-string \1\e[33;1m\2(cmd)\1\e[2 q\2
 # the explanation:
@@ -79,8 +79,9 @@ set show-mode-in-prompt on
 # 2) about the color, the form is that: \e[F;Bm
 # 3) if not use the escape \, that is the string, for example the (ins) and the (cmd)
 # 4) about the cursor's shape: \e[shape_number q;  the shape_nunber: learning...
-set vi-ins-mode-string \1\e[33;1m\2(->)\1\e[5 q\e]12;orange\a\2
-set vi-cmd-mode-string \1\e[31;1m\2(-^)\1\e[1 q\e]12;red\a\2
+# 1: shinning block; 2:block; 3:shining underscore; 4:underscore; 5:shinning pile line; 6: pile line
+#set vi-ins-mode-string \1\e[33;1m\2(->)\1\e[5 q\e]12;orange\a\2
+#set vi-cmd-mode-string \1\e[31;1m\2(-^)\1\e[1 q\e]12;red\a\2
 $if mode=vi
 	set keymap vi-insert
 "\C-l":clear-screen

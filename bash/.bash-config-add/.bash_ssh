@@ -13,9 +13,11 @@
 # gj
 # >>>>>>>>>
 # ip 
-export hgj_dp='-p 68 hgj@202.38.214.220'   # window, wifi
+#export hgj_dp='-p 6867 hgj@202.38.214.220'   # window, wifi
+#export hgj_dp='-p 6867 hgj@202.38.214.220'   # window, wifi
+export hgj_dp='-p 6867 hgj@202.38.214.122' # root, ubuntu, wire
 export hgj_lab='gjsq@202.38.214.68'  # window, wire
-export hgj_pc='root@172.27.51.182'   # ubuntu, wifi
+export hgj_pc='root@172.27.54.77'   # ubuntu, wifi
 export tx2='root@202.38.214.223'     # ubuntu, wire
 # file
 export hgj_pc_f=${hgj_pc}:/home/hgj/ftp
@@ -29,7 +31,7 @@ alias c-tx2='ssh ${tx2}'
 
 # sq
 # >>>>>>>>>
-is_wire=0   # if not wire, set to 0(220, the scut214 is the xxx 222)
+is_wire=1   # if not wire, set to 0(220, the scut214 is the xxx 222)
 if [ $is_wire -eq 1 ];then
     export dear_pc='root@202.38.214.122' # root, ubuntu, wire
     export dear_pc_='ysq@202.38.214.122' # ysq, ubuntu, wire
@@ -49,9 +51,10 @@ alias c-dear_='ssh ${dear_pc_}'
 # >>>>>>>>>
 # ip
 export scut_M5000='root@202.38.214.221'
-export scut_1080='snr@202.38.214.192'
+export scut_1080='scut214@218.192.172.109'
 export scut_2080='scut@202.38.214.111'
-export scut_3080='scut@218.192.172.108'
+export scut_3080='scut@202.38.214.117'
+export nano='mic-710ai@202.38.214.222'
 # file
 export scut_M5000_f=${scut_M5000}:/home/scut/ftp
 export scut_1080_f=${scut_1080}:/home/snr/ftp
@@ -64,6 +67,7 @@ alias c_s='c-s' # to solve the problem of the confilct of the ctrl + c in the tm
 alias c-s1='ssh ${scut_1080}'
 alias c-s2='ssh ${scut_2080}'
 alias c-s3='ssh ${scut_3080}'
+alias c_nano='ssh ${nano}'
 # <<<<<<<<<
 
 #common

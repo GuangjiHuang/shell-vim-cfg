@@ -51,7 +51,7 @@ fi
 # change this -by hgj
 color_prompt=yes
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -79,9 +79,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -alFh'
+alias la='ls -Ah'
+alias l='ls -CFh'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -114,12 +114,15 @@ set -o vi
 ############## change the inline shell(the option in the set and the shopt)####################
 # turn on this option let you can use the ** to match any directories or the subdirectoies or the files, and the **/ (adding the backslash, that matching any directories or the subdirectories)
 shopt -s globstar 
+shopt -s extglob
+shopt -s dotglob
 
 
 ############### for the tmux bash ##########
+export LANG=$(locale -uU) # solve the problem that inside the tmux that can not show the Chinese
 if [ -n "$TMUX" ]; then
     # set the PS1 to the newline
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$\n '
     # execute the file of the mode control
     mode_control_file_path=/opt/myscript/tmux-manager/mode-control.sh
     if [ -f $mode_control_file_path ];then
@@ -136,9 +139,19 @@ to()
     fi
 }
 
-############### add the newline if the PS1 is too long ##########
+#-------------- add the newline if the PS1 is too long ----------
 cout_path=$(pwd | wc -m)
 cout_threshold=50
 if [ $cout_path -gt $cout_threshold ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$\n '
+fi
+
+#export LANG='en_US'
+#export LANG='UTF-8'
+
+#------ vscode, clion and pycharm use the cygwin as the terminal -------
+# win and env meet the need
+if [[ $(uname) =~ CYGWIN.* ]] && [ $OLDPWD ] && [ $TERMINAL_EMULATOR -o $TERM_PROGRAM ];then
+    echo "cd $OLDPWD"
+    cd $OLDPWD
 fi

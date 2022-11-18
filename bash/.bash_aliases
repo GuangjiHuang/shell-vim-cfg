@@ -37,8 +37,8 @@ alias @='love you'
 #  **************************** the other app ****************************
 # the ygwin, to install the new( just in the cygwin)
 if [ $(uname -o) == "Cygwin" ]; then
-    alias cygwin-install='/cygdrive/d/cygwin_again/setup-x86_64.exe -q -P &'
-    alias cygwin='/cygdrive/d/cygwin_again/setup-x86_64.exe &'
+    alias cygwin-install='/cygdrive/d/cygwin64/setup-x86_64.exe -q -P &'
+    alias cygwin='/cygdrive/d/cygwin64/setup-x86_64.exe &'
 fi
 # the asciiquarium
 alias asq='asciiquarium'
@@ -58,3 +58,35 @@ alias into='tmux attach -t $1'
 #  ************************** the vifm.exe ****************************
 alias vifm='c:/Users/97682/Downloads/vifm-w32-se-0.12-binary/vifm.exe $(cygpath -w $(pwd))'
 
+#  ************************** work, type, English ****************************
+English_main_dir=${HOME}/mygithub/shell-script/tmux-manager/English-code
+type_main_dir=${HOME}/mygithub/shell-script/tmux-manager/type-code
+source_dir=${HOME}/mygithub/shell-script/tmux-manager
+work_data_dir=${HOME}/mygithub/data-shared/work_management/data
+type_data_dir="${HOME}/mygithub/data-shared/type"
+English_data_dir="${HOME}/mygithub/data-shared/English"
+alias to-English='python ${English_main_dir}/main.py -workspace $English_data_dir'
+alias to-type='python ${type_main_dir}/main.py -workspace $type_data_dir'
+alias to-work='cd $source_dir/work_management; ./main.exe $work_data_dir'
+
+#  ************************** about the prompt strintg ****************************
+ps_l=$PS1
+ps_m="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\W\[\033[00m\]$ "
+ps_just_uh="\[\033[01;33m\]\w\[\033[00m\]$ "
+ps_just_dir="\[\033[01;32m\]\u@\h\[\033[00m\]$ "
+ps_custom="\[\033[01;32m\]@hgj\[\033[00m\] [\[\033[01;33m\]...\W\[\033[00m\]]${LIGHTRED}->:${NOCOLOR} "
+alias ps='export PS1=$ps_custom'
+alias psl='export PS1=$ps_l'
+alias psm='export PS1=$ps_m'
+alias psuh='export PS1=$ps_just_dir'
+alias psd='export PS1=$ps_just_uh'
+
+#  ************************** proxy ****************************
+alias on_proxy='export https_proxy=127.0.0.1:7891'
+alias off_proxy='export https_proxy='
+# --
+alias pip3='/cygdrive/d/Python38/Scripts/pip3.exe'
+
+#  ************************** about the git command ****************************
+alias git_push='git add . && git commit -m "update->$(datef)" && git push'
+alias git_pull='git pull || git fetch --all && git reset --hard origin/master && git pull'
