@@ -159,3 +159,6 @@ if [[ $(uname) =~ CYGWIN.* ]] && [ $OLDPWD ] && [ $TERMINAL_EMULATOR -o $TERM_PR
     echo "cd $OLDPWD"
     cd $OLDPWD
 fi
+
+# set the DISPLAY to show remote x11
+export DISPLAY=:0.0

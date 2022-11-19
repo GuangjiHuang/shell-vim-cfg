@@ -75,7 +75,7 @@ ps_m="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\W\[\033[00m\]$ "
 ps_just_uh="\[\033[01;33m\]\w\[\033[00m\]$ "
 ps_just_dir="\[\033[01;32m\]\u@\h\[\033[00m\]$ "
 ps_custom="\[\033[01;32m\]@hgj\[\033[00m\] [\[\033[01;33m\]...\W\[\033[00m\]]${LIGHTRED}->:${NOCOLOR} "
-alias ps='export PS1=$ps_custom'
+alias pss='export PS1=$ps_custom'
 alias psl='export PS1=$ps_l'
 alias psm='export PS1=$ps_m'
 alias psuh='export PS1=$ps_just_dir'
@@ -84,8 +84,11 @@ alias psd='export PS1=$ps_just_uh'
 #  ************************** proxy ****************************
 alias on_proxy='export https_proxy=127.0.0.1:7891'
 alias off_proxy='export https_proxy='
+alias test_proxy='curl -I https://www.youtube.com && echo "successfully!'
 # --
-alias pip3='/cygdrive/d/Python38/Scripts/pip3.exe'
+if [[ $(uname) == CYGWIN* ]]; then # this is the pattern match
+    alias pip3='/cygdrive/d/Python38/Scripts/pip3.exe'
+fi
 
 #  ************************** about the git command ****************************
 alias git_push='git add . && git commit -m "update->$(datef)" && git push'
