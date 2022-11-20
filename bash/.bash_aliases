@@ -96,3 +96,6 @@ alias git_pull='git pull || git fetch --all && git reset --hard origin/master &&
 
 #  ************************** about the inputrc ****************************
 alias readline='bind -f ~/.inputrc'
+
+# ******************** show the gpu usage ********************
+alias show='nvidia-smi -l'
