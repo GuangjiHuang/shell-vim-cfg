@@ -123,7 +123,7 @@ shopt -s dotglob
 
 
 ############### for the tmux bash ##########
-#export LANG=$(locale -uU) # solve the problem that inside the tmux that can not show the Chinese
+export LANG=$(locale -uU) # solve the problem that inside the tmux that can not show the Chinese
 if [ -n "$TMUX" ]; then
     # set the PS1 to the newline
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$\n '
@@ -161,4 +161,6 @@ if [[ $(uname) =~ CYGWIN.* ]] && [ $OLDPWD ] && [ $TERMINAL_EMULATOR -o $TERM_PR
 fi
 
 # set the DISPLAY to show remote x11
-export DISPLAY=:0.0
+if [[ ! $(uname) == "Linux" ]];then
+    export DISPLAY=:0.0
+fi
