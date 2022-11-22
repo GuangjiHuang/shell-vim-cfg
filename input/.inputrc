@@ -73,8 +73,8 @@ set show-mode-in-prompt on
 #set vi-ins-mode-string "\1\e[01;40m\2\1\e[01;35m\2\1\e[5 q\e]12;orange\a\2[Y]\1\e[0m\2"  # cursor: shinning pile-line, orange
 #set vi-cmd-mode-string "\1\e[01;40m\2\1\e[01;31m\2\1\e[2 q\e]12;red\a\2[H]\1\e[0m\2" # cursor: still block, red
 #set vi-ins-mode-string "\1\e[1;5;9m\2\1\e[35;40m\2[Y]\1\e[5 q\e]12;orange\a\2\1\e[0m\2"  
-set vi-ins-mode-string "\1\e[1;4;35;40m\2[Y]\1\e[5 q\e]12;orange\007\2\1\e[0m\2"
-set vi-cmd-mode-string "\1\e[1;9;31;40m\2[H]\1\e[1 q\e]12;red\007\2\1\e[0m\2" 
+set vi-ins-mode-string "\1\e[1;1;35;40m\2[SQ]\1\e[5 q\e]12;orange\007\2\1\e[0m\2"
+set vi-cmd-mode-string "\1\e[1;1;31;40m\2[GJ]\1\e[1 q\e]12;red\007\2\1\e[0m\2" 
 #set vi-ins-mode-string \1\e[34;1m\2(ins)\1\e[5 q\2
 #set vi-cmd-mode-string \1\e[33;1m\2(cmd)\1\e[2 q\2
 # the explanation:
