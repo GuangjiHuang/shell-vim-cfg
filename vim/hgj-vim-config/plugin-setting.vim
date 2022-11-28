@@ -5,8 +5,31 @@
 " ^---------- vim-plug ----------$
 call plug#begin('~/.vim/plugged')
 " github
-Plug 'git://github.com/junegunn/vim-easy-align'
-Plug 'git://github.com/pechorin/any-jump.vim'
+" easymotion, goyo, limelight, mathjax-support-for-mkdp, nerdtree, python-vim-instant-markdown,
+" taglist, unicode, vim-exchange, vim-latex-live-preview, vim-numbertoggle, vim-table-mode,
+" easy-rich-text, txtfmt,
+" surround, unimpaired, vim-obsession
+Plug 'junegunn/vim-easy-align'
+Plug 'pechorin/any-jump.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'bpstahlman/txtfmt'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'tommcdo/vim-exchange'
+Plug 'xuhdev/vim-latex-live-preview'
+Plug 'chrisbra/unicode.vim'
+Plug 'vim-scripts/taglist.vim', {'on': 'NOTLOAD'}
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-obsession'
+Plug 'preservim/nerdtree'
+Plug 'isnowfy/python-vim-instant-markdown'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'ycm-core/YouCompleteMe', {'on': 'NOTLOAD'}
+
 " local
 Plug '~/.vim/plugged/command-t', {'on' : 'Activatecommand'}
 Plug '~/.vim/plugged/vim-instant-markdown', {'for' : 'markdown'}

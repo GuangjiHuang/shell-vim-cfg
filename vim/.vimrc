@@ -90,55 +90,8 @@ let &t_EI = "\e[1 q\e]12;red\x7"
 "  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 "endif
 
-"  ---------------------------------------------------------------
-"  **********************abou the command set**********
-"  ---------------------------------------------------------------
-:command W w
-"  ---------------------------------------------------------------
-"  ********************** the test setting (provisonal) **********
-"  ---------------------------------------------------------------
-au BufWritePre *.html :normal gg=G
-" you can serach" < How can I emulate key press on Vim startup? > " in the
-" google
-"funciton: when you open the file, press the zz automatically in the vim, that is very useful
-"au BufRead *.goal :execute "normal zz" 
-"au BufRead *.txt :execute "normal z\<Cr>"
-au BufRead,BufNewFile *.txt,*.goal,*.pratice :execute "normal zz\<Cr>"
-"--------------------------------------------------------------------------------
-" Automatically open the quickfix window on: make
-"--------------------------------------------------------------------------------
-" Automatically open, but do not go to (if there are errors) the quickfix /
-" location list window, or close it when is has become empty.
-"
-" Note: Must allow nesting of autocmds to enable any customizations for quickfix
-" buffers.
-" Note: Normally, :cwindow jumps to the quickfix window if the command opens it
-" (but not if it's already open). However, as part of the autocmd, this doesn't
-" seem to happen.
-autocmd QuickFixCmdPost [^l]* nested cwindow
-"autocmd QuickFixCmdPost [^l]* nested copen "always open the quickfix
-autocmd QuickFixCmdPost    l* nested lwindow
-"
-"--------------------------------------------------------------------------------
-" underline, overline, and the strikeout line
-"--------------------------------------------------------------------------------
-" EXPLANATION:
-" reference to the url:
-" https://vim.fandom.com/wiki/Create_underlines,_overlines,_and_strikethroughs_using_combining_characters
-" usage: :Overline;  or the :Underline  or the :DoubleUnderline or the
-" Strikethrough
-"--------------------------------------------------------------------------------
-" modify selected text using combining diacritics
-command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
-command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
-command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
-command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
-function! s:CombineSelection(line1, line2, cp)
-  execute 'let char = "\u'.a:cp.'"'
-  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
-endfunction
-
 "-------------------- customerized source files --------------------
-"source ~/.vim/hgj-vim-config/func.vim " function
-source ~/.vim/hgj-vim-config/map.vim "map
-"source ~/.vim/hgj-vim-config/plugin-setting.vim " plugin
+source ~/.vim/hgj-vim-config/func.vim " functions
+source ~/.vim/hgj-vim-config/hgj_command.vim " some commands
+source ~/.vim/hgj-vim-config/map.vim " map
+source ~/.vim/hgj-vim-config/plugin-setting.vim " plugin settigns
