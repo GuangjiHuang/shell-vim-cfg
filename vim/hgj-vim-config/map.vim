@@ -125,6 +125,10 @@ nnoremap <leader>w :w<CR>
 " \y
 " -------------------------------------------z/Z-------------------------------------------
 " \z
+nnoremap zq :q!<CR> | " quit force, not savethe 
+nnoremap zp :w<CR> | " save
+nnoremap zP :x<CR> | " save and then exit
+
 " -------------------------------------------%/%-------------------------------------------
 " \%
 nnoremap <leader>% :call FindHeader()<CR>

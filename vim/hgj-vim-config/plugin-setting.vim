@@ -25,10 +25,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'preservim/nerdtree'
-Plug 'isnowfy/python-vim-instant-markdown'
+"Plug 'isnowfy/python-vim-instant-markdown'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
-Plug 'ycm-core/YouCompleteMe', {'on': 'NOTLOAD'}
+Plug 'ycm-core/YouCompleteMe'
 
 " local
 Plug '~/.vim/plugged/command-t', {'on' : 'Activatecommand'}
@@ -82,7 +82,10 @@ autocmd User GoyoLeave Limelight!
 :command T Ntree
 :command NT NERDTree
 "
-" ^---------- plugin_name ----------$
+" ^---------- Youcompleteme ----------$
+nmap <leader>yfw <Plug><YCMFindSymbolInWorkspace>
+nmap <leader>yfd <Plug><YCMFindSymbolInDocument>
+nmap <leader>jd :YcmCompleter GoToDefinition<CR>
 "
 " ^---------- plugin_name ----------$
 "

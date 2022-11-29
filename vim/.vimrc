@@ -1,9 +1,13 @@
 "set showmatch       " show matching brackets.
+set showcmd
 set ignorecase
 set smartcase
 "set autowrite       " Automatically save before commands like :next and :make
 set hidden          " Hide buffers when they are abandoned
 set mouse=a         " Enable mouse usage (all mouse)
+" leader key and the timeout
+let mapleader = ','
+"let mapleader = ' '
 set timeout timeoutlen=1500 " waiting time whne keying leading key
 
 " bg, term's color bits
@@ -37,7 +41,11 @@ set formatoptions-=c " auto wrap next line if comment too long
 " indent
 "set autoindent " start the newline and will deal the indent
 set smartindent
-inoremap # X^H# " remove auto to left when typing # 
+"inoremap # X^H# | "not work, I don't know why?
+"set cinkeys=0{,0},!^F,o,O,e " default is the: 0{,0},0),:,0X^H#,!^F,o,O,e
+
+
+
 au BufRead,BufNewFile *.cpp,*.c,*.h,*.hpp set cindent
 
 " tab
@@ -66,7 +74,7 @@ set listchars+=space:.
 "set statusline=\PATH:\ %r%F\ \ \ \ \LINE:\ %l/%L/%P\ TIME:\ %{strftime('%c')}
 set ruler
 "set rulerformat=%55(%{strftime('%F\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
-set rulerformat=%36(%{strftime('%F\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
+"set rulerformat=%36(%{strftime('%F\ %H:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 " set the isfilename to get ride of the = character;
 "set isfname=@,48-57,/,.,-,_,+,,,#,$,%,~
 
