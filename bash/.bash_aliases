@@ -82,9 +82,9 @@ alias psuh='export PS1=$ps_just_dir'
 alias psd='export PS1=$ps_just_uh'
 
 #  ************************** proxy ****************************
-alias on_proxy='export https_proxy=127.0.0.1:7891'
-alias off_proxy='export https_proxy='
-alias test_proxy='curl -I https://www.youtube.com && echo "successfully!'
+alias on_proxy='export https_proxy=127.0.0.1:7891; export http_proxy=127.0.0.1:7891'
+alias off_proxy='unset https_proxy; unset http_proxy'
+alias test_proxy='curl -I https://www.youtube.com >/dev/null 2>&1 && echo "Request youtube.com successfully!"'
 # --
 if [[ $(uname) == CYGWIN* ]]; then # this is the pattern match
     alias pip3='/cygdrive/d/Python38/Scripts/pip3.exe'

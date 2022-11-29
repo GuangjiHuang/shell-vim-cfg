@@ -30,8 +30,8 @@ highlight CursorLineNr ctermbg=0 ctermfg=red
 
 " cursor
 set cursorline
-set cursorlineopt=number " number, line, screenline, both
-highlight CursorLine ctermbg=black ctermfg=white  cterm=inverse " I don't know why not work?
+"set cursorlineopt=number " number, line, screenline, both
+highlight CursorLine ctermbg=239 ctermfg=NONE  cterm=NONE " I don't know why not work?
 
 " cancle auto comment next line
 set formatoptions-=o " hit o or O
@@ -42,7 +42,7 @@ set formatoptions-=c " auto wrap next line if comment too long
 "set autoindent " start the newline and will deal the indent
 set smartindent
 "inoremap # X^H# | "not work, I don't know why?
-"set cinkeys=0{,0},!^F,o,O,e " default is the: 0{,0},0),:,0X^H#,!^F,o,O,e
+set cinkeys=0{,0},!^F,o,O,e " default is the: 0{,0},0),:,0X^H#,!^F,o,O,e
 
 
 

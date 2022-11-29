@@ -26,15 +26,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'preservim/nerdtree'
 "Plug 'isnowfy/python-vim-instant-markdown'
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'iamcco/mathjax-support-for-mkdp'
+"Plug 'iamcco/markdown-preview.nvim', {'do': {-> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'instant-markdown/vim-instant-markdown', {'for' : 'markdown', 'do': 'yarn install'}
+"Plug 'ycm-core/YouCompleteMe'
 
 " local
-Plug '~/.vim/plugged/command-t', {'on' : 'Activatecommand'}
-Plug '~/.vim/plugged/vim-instant-markdown', {'for' : 'markdown'}
-Plug '~/.vim/plugged/vim-fugitive'
-Plug '~/.vim/plugged/vinegar', {'on' : 'Onvinegar'}
+"Plug '~/.vim/plugged/command-t', {'on' : 'Activatecommand'}
 call plug#end()
 "
 " ^---------- easymotion ----------$
@@ -86,6 +84,21 @@ autocmd User GoyoLeave Limelight!
 nmap <leader>yfw <Plug><YCMFindSymbolInWorkspace>
 nmap <leader>yfd <Plug><YCMFindSymbolInDocument>
 nmap <leader>jd :YcmCompleter GoToDefinition<CR>
+"
+" ^---------- instant-vim-markdown ----------$
+"filetype plugin on
+"Uncomment to override defaults:
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 1
+"let g:instant_markdown_open_to_the_world = 1
+let g:instant_markdown_allow_unsafe_content = 1
+let g:instant_markdown_allow_external_content = 1
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_mermaid = 1
+let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+let g:instant_markdown_autoscroll = 1
+"let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
 "
 " ^---------- plugin_name ----------$
 "
