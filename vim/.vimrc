@@ -84,8 +84,10 @@ set ruler
 " 4: steady underline; 5: blinking bar(xterm); 6: steady bar(xterm)
 "let &t_SI = "\e[5 q" " just shape 
 "let &t_EI = "\e[6 q"
-let &t_SI = "\e[5 q\e]12;green\x7" " with color
 let &t_EI = "\e[1 q\e]12;red\x7"
+let &t_SI = "\e[5 q\e]12;green\x7" " with color
+" bar -> block
+au VimEnter * silent execute '!echo -ne "\e[2 q\e]12;red\a\2"' | redraw!
 "  -- the old way -- 
 "if has("autocmd")
 "  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
@@ -97,9 +99,11 @@ let &t_EI = "\e[1 q\e]12;red\x7"
 "    \ endif
 "  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 "endif
-
+"
 "-------------------- customerized source files --------------------
 source ~/.vim/hgj-vim-config/func.vim " functions
 source ~/.vim/hgj-vim-config/hgj_command.vim " some commands
 source ~/.vim/hgj-vim-config/map.vim " map
 source ~/.vim/hgj-vim-config/plugin-setting.vim " plugin settigns
+source ~/.vim/hgj-vim-config/spelling-corect.vim "corect the spelling mistakes
+

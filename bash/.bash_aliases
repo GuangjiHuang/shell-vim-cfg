@@ -99,3 +99,4 @@ alias readline='bind -f ~/.inputrc'
 
 # ******************** show the gpu usage ********************
 alias show='nvidia-smi -l'
+

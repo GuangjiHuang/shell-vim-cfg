@@ -140,11 +140,11 @@ to()
 }
 
 #-------------- add the newline if the PS1 is too long ----------
-cout_path=$(pwd | wc -m)
-cout_threshold=50
-if [ $cout_path -gt $cout_threshold ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$\n '
-fi
+#cout_path=$(pwd | wc -m)
+#cout_threshold=50
+#if [ $cout_path -gt $cout_threshold ]; then
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$\n '
+#fi
 
 #export LANG='en_US'
 #export LANG='UTF-8'

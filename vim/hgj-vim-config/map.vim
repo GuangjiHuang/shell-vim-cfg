@@ -11,19 +11,19 @@ nnoremap <leader>at :call Exec('echo strftime("%c")')<CR>
 " 
 " -------------------------------------------c/C-------------------------------------------
 "  \c C <comment>
-au FileType cpp,c nnoremap <buffer> <localleader>c I//<esc>
-au FileType cpp,c nnoremap <buffer> <localleader>C :silent s/\/\//<CR>
-au FileType python,cmake,sh nnoremap <buffer> <localleader>c I#<esc>
-au FileType python,cmake,sh nnoremap <buffer> <localleader>C :silent s/#//<CR>
-au FileType vim nnoremap <buffer> <localleader>c I"<esc>
-au FileType vim nnoremap <buffer> <localleader>C :silent s/"//<CR>
+au FileType cpp,c nnoremap <buffer> <leader>c I//<esc>
+au FileType cpp,c nnoremap <buffer> <leader>C :silent s/\/\//<CR>
+au FileType python,cmake,sh nnoremap <buffer> <leader>c I#<esc>
+au FileType python,cmake,sh nnoremap <buffer> <leader>C :silent s/#//<CR>
+au FileType vim nnoremap <buffer> <leader>c I"<esc>
+au FileType vim nnoremap <buffer> <leader>C :silent s/"//<CR>
 "
 " -------------------------------------------d/D-------------------------------------------
 " \d <delete>
 command! DeleteBuffer execute '%bd|e #|normal `"'
 nnoremap <leader>db :DeleteBuffer<CR>
 " delete the % file
-nnoremap <leader>d% :!rm % \| redraw!<CR>
+nnoremap <leader>D% :!rm % \| redraw!<CR>
 " -------------------------------------------e/E-------------------------------------------
 " \e
 " ex command
@@ -33,17 +33,28 @@ nnoremap <leader>er :reg
 nnoremap <leader>eq :q!<CR> 
 nnoremap <leader>ew :w<CR>
 nnoremap <leader>ex :x<CR>
+nnoremap <leader>ee :e!<CR>
 "nnoremap <leader>e
 "nnoremap <leader>e
 " -------------------------------------------f/F-------------------------------------------
-" \f <function>
+" \f <function> <file>
+nnoremap <leader>ff :file<CR>
+nnoremap <leader>fd :call GoBackToFunctionDefinition("backward")<CR>
+nnoremap <leader>fD :call GoBackToFunctionDefinition("forward")<CR>
+"nnoremap <leader>fb [[ 
+"command! GoBackToFunctionDefinition execute "normal! /^[a-z].*(.*)\<cr>N"
+"au FileType cpp,c,python nnoremap <leader>gd :GoBackToFunctionDefinition<cr>
 "
 " -------------------------------------------g/G-------------------------------------------
 " \g 
 " Goyo
-nnoremap <leader>g :Goyo 60%x100%<Cr>
+nnoremap <leader>gy :Goyo 60%x100%<Cr>
 " -------------------------------------------h/H-------------------------------------------
 " \h
+" hight light the line
+nnoremap <leader>hh :Highlight h<CR>
+" cancle the highlight
+nnoremap <leader>hn :Highlight n<CR>
 " -------------------------------------------i/I-------------------------------------------
 " \i <into the code env>
 nnoremap <leader>ib :call IntoCodeEnv("bash")<CR>
@@ -57,7 +68,7 @@ nnoremap <leader>iv :call IntoCodeEnv("vim")<CR>
 " \k
 " -------------------------------------------l/L-------------------------------------------
 " \l
-nnoremap <leader>l :Limelight!!<Cr>
+nnoremap <leader>l :Limelight!!<cr>
 " -------------------------------------------m/M-------------------------------------------
 " \m
 " -------------------------------------------n/N-------------------------------------------
@@ -72,7 +83,8 @@ nnoremap <leader>l :Limelight!!<Cr>
 " \r R
 " run the code
 " c/c++ with or without cmake
-nnoremap <leader>rc :w \| !. ./run %<CR>
+"nnoremap <leader>rc :w \| !. ./run %<CR>
+nnoremap <leader>rc :w \| !../test<CR>
 nnoremap <leader>Rc :w \| !. ../run %<CR>
 " vimscript
 nnoremap <leader>rv :w \| source %<CR>
@@ -122,7 +134,7 @@ nnoremap <leader>w :w<CR>
 " -------------------------------------------x/X-------------------------------------------
 " \x
 " -------------------------------------------y/Y-------------------------------------------
-" \y
+" \y <use to copy the line>
 " -------------------------------------------z/Z-------------------------------------------
 " \z
 nnoremap zq :q!<CR> | " quit force, not savethe 
@@ -143,18 +155,39 @@ nnoremap _c :close<CR>
 nnoremap _m :marks<CR>
 map _l :ls<CR>
 
-
 "  ---------------------------------------------------------------
 "  >>  Maping the key <<
 "  ---------------------------------------------------------------
 " insert mappings
 inoremap jj <esc>
+" disable the esc, just practice the jj
+"inoremap <esc> <nop> # I don't know why, this make the errro, if you key
+"shift + other key, it will show as the [ss;2u], strange!
 inoremap <C-u> <esc>gUiwea
 
 " normal mappings
 "about the jump to the window quickly
 nnoremap gw <c-w>
-nnoremap <c-h> <c-w><c-h>
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+"  ---------------------------------------------------------------
+"  >>  match braces <<
+"  ---------------------------------------------------------------
+inoremap {<CR> {<CR>}<C-o>O
+inoremap ( ()<esc>ha
+inoremap [ []<esc>ha
+inoremap " ""<esc>ha
+"inoremap ' ''<esc>ha
+"
+"inoremap kk <esc>la
+inoremap <c-l> <right>
+
+"  ---------------------------------------------------------------
+"  >> space insert mode <<
+"  ---------------------------------------------------------------
+inoremap <c-o> <esc>o
+inoremap <c-h> <esc>ciw
+"

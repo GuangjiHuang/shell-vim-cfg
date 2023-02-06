@@ -20,4 +20,6 @@ LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
-alias whichpill='echo -e "You take the ${BLUE}blue pill${NOCOLOR}—the story ends, you wake up in bed and believe whatever you want to believe. You take the ${RED}red pill${NOCOLOR}—you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember: all I’m offering is the ${YELLOW}truth${NOCOLOR}. Nothing more."';
+alias which_color='echo -e "You take the ${BLUE}blue pill${NOCOLOR}—the story ends, you wake up in bed and believe whatever you want to believe. You take the ${RED}red pill${NOCOLOR}—you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember: all I’m offering is the ${YELLOW}truth${NOCOLOR}. Nothing more."';
+
+alias show_color='for i in {0..100};do echo -e "\033[${i};31m $i \033[0m";done'

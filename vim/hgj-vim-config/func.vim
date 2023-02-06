@@ -97,3 +97,20 @@ function! Exec(cmd)
     exec "put z"
     redir END
 endfunction
+    
+"-----------------------------------------------------------------------------------------
+" c,c++,python go to the function definition when you are in the middle of the funciton body  
+function! GoBackToFunctionDefinition(jump_direction)
+    let s_direct_flag = a:jump_direction=="backward" ? "b" : ""
+    " mark the current position
+    mark z
+    let original_line_number = line(".")
+    let fun_def_pattern = "^[a-zA-Z].*(.*)"
+    let num_line = search(fun_def_pattern, s_direct_flag)
+    if num_line
+        echo original_line_number " -> " num_line
+    else
+        echo "No function definition!"
+    endif
+endfunction!
+

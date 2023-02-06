@@ -28,8 +28,10 @@ alias c-server='ssh -Y ${hgj_server}'
 # >>>>>>>>>
 is_wire=1   # if not wire, set to 0(220, the scut214 is the xxx 222)
 if [ $is_wire -eq 1 ];then
-    export dear_pc='root@202.38.214.122' # root, ubuntu, wire
-    export dear_pc_='ysq@202.38.214.122' # ysq, ubuntu, wire
+    #export dear_pc='root@202.38.214.122' # root, ubuntu, wire
+    #export dear_pc_='ysq@202.38.214.122' # ysq, ubuntu, wire
+    export dear_pc='root@192.168.1.101' # root, ubuntu, wire
+    export dear_pc_='ysq@192.168.1.101' # ysq, ubuntu, wire
 elif [ $is_wire -eq 0 ];then
     export dear_pc='root@202.38.214.220 -p 221' # root, ubuntu, wifi
     export dear_pc_='ysq@202.38.214.220 -p 221' # ysq, ubuntu, wifi
