@@ -99,4 +99,8 @@ alias readline='bind -f ~/.inputrc'
 
 # ******************** show the gpu usage ********************
 alias show='nvidia-smi -l'
-
+alias pose='conda activate alphapose'
+alias base='conda activate base'
+alias hgj='ps -ef | grep hgj'
+alias stop='pgrep -f "sys-detect" | xargs sudo kill -9; pgrep -f "hgj" | xargs sudo kill -9'
+alias start='. /opt/startup/hgj_startup.sh'
