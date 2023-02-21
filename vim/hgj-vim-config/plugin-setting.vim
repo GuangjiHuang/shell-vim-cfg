@@ -35,6 +35,7 @@ Plug '~/.vim/plugged/autocorrect'
 Plug 'preservim/tagbar'
 "Plug 'solyarisoftware/Highlight.vim'
 Plug 'joanrivera/vim-highlight'
+Plug 'gcmt/taboo.vim'
 call plug#end()
 "
 " ^---------- easymotion ----------$

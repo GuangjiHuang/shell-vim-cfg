@@ -7,7 +7,7 @@ nnoremap <leader>at :call Exec('echo strftime("%c")')<CR>
 
 " -------------------------------------------b/B-------------------------------------------
 "  \b
-" 
+nnoremap <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
 " -------------------------------------------c/C-------------------------------------------
 "  \c C <comment>
 au FileType cpp,c nnoremap <buffer> <leader>c I//<esc>
@@ -112,6 +112,17 @@ nnoremap <leader>tp :tabp<CR>
 nnoremap <leader>tn :tabn<CR>
 nnoremap <leader>tl :tablast<CR>
 nnoremap <leader>tf :tabfirst<CR>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 :tablast<CR>
+
 " <TREE>
 nnoremap <leader>T :NERDTree<CR>
 "nnoremap <leader>T :Ntree<CR>
