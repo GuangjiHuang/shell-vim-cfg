@@ -1,5 +1,4 @@
-"  ===============================================================
-"  >> <leader>+x <<  @Guangji Huang
+"  =============================================================== "  >> <leader>+x <<  @Guangji Huang
 "  ===============================================================
 " -------------------------------------------a/A-------------------------------------------
 "  \a <append>
@@ -17,6 +16,8 @@ au FileType python,cmake,sh nnoremap <buffer> <leader>c I#<esc>
 au FileType python,cmake,sh nnoremap <buffer> <leader>C :silent s/#//<CR>
 au FileType vim nnoremap <buffer> <leader>c I"<esc>
 au FileType vim nnoremap <buffer> <leader>C :silent s/"//<CR>
+"nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>cd :call SwitchWorkDir()<CR>
 "
 " -------------------------------------------d/D-------------------------------------------
 " \d <delete>

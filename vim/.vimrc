@@ -100,10 +100,12 @@ au VimEnter * silent execute '!echo -ne "\e[2 q\e]12;red\a\2"' | redraw!
 "  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 "endif
 "
+" set the path
+let &path = &path . "," . expand($HOME) . "/**"
 "-------------------- customerized source files --------------------
 source ~/.vim/hgj-vim-config/func.vim " functions
 source ~/.vim/hgj-vim-config/hgj_command.vim " some commands
-source ~/.vim/hgj-vim-config/map.vim " map
+source ~/.vim/hgj-vim-config/map.vim 
 source ~/.vim/hgj-vim-config/plugin-setting.vim " plugin settigns
 source ~/.vim/hgj-vim-config/spelling-corect.vim "corect the spelling mistakes
 

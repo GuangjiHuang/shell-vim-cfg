@@ -114,3 +114,20 @@ function! GoBackToFunctionDefinition(jump_direction)
     endif
 endfunction!
 
+"-----------------------------------------------------------------------------------------
+" the function that switch to the file's dir and the current dir
+function! SwitchWorkDir()
+    " get the current dir
+    if !exists("w:next_win_dir")
+        let w:next_win_dir = getcwd()
+        " change to the file current dir
+        call chdir(expand("%:p:h"))
+        echo w:next_win_dir . " -> " . getcwd()
+    else
+        let tmp_dir = getcwd()
+        " go to the next window dir
+        call chdir(w:next_win_dir)
+        let w:next_win_dir = tmp_dir
+        echo w:next_win_dir . " -> " . getcwd()
+    endif
+endfunction!

@@ -19,6 +19,9 @@ alias love='. love'
 alias c-='wr -c' #copy the current path to the /dev/clipboard
 alias v-='wr -v' #show the /dev/clipboard to the terminal
 alias cfg='. cfg' #cfg-manager
+alias b='. b' # backward 
+alias f='. f' # forward 
+alias c='. c' # change dir, command
 
 # >> This may be somebit verbose for the wr
 alias go-b='wr -v b go' # go to the bash_test
