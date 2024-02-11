@@ -22,6 +22,9 @@ highlight Search ctermbg=155 ctermfg=0
 highlight IncSearch ctermbg=black ctermfg=red
 "highlight MatchParen cterm=underline ctermbg=NONE ctermfg=NONE
 
+" regular expression
+set magic
+
 " line number
 set nu
 set rnu " relativenumber
@@ -31,7 +34,8 @@ highlight CursorLineNr ctermbg=0 ctermfg=red
 " cursor
 set cursorline
 "set cursorlineopt=number " number, line, screenline, both
-highlight CursorLine ctermbg=239 ctermfg=NONE  cterm=NONE " I don't know why not work?
+"highlight CursorLine ctermbg=239 ctermfg=NONE  cterm=NONE " I don't know why not work?
+highlight CursorLine ctermbg=232 ctermfg=NONE  cterm=NONE " I don't know why not work?
 
 " cancle auto comment next line
 set formatoptions-=o " hit o or O
@@ -44,13 +48,12 @@ set smartindent
 "inoremap # X^H# | "not work, I don't know why?
 set cinkeys=0{,0},!^F,o,O,e " default is the: 0{,0},0),:,0X^H#,!^F,o,O,e
 
-
-
 au BufRead,BufNewFile *.cpp,*.c,*.h,*.hpp set cindent
 
 " tab
-set expandtab  " expand the tab key as the space
+"set expandtab  " expand the tab key as the space
 set tabstop=4  " key one time tab, indent 4 space
+set softtabstop=4 " vim see the continues space as the tab character
 set shiftwidth=4 " if auto indent, will indent 4 space
 set backspace=2 " function?
 
@@ -58,8 +61,8 @@ set backspace=2 " function?
 set fencs=utf-8,big5,gb18030,utf-16 "fileencodings
 
 " fold setting
-set foldmethod=marker "{{{}}} as the fold marker
-"set foldmethod=syntax
+"set foldmethod=marker "{{{}}} as the fold marker
+set foldmethod=syntax
 
 " show space, tab, newline, end_of_line
 set listchars=tab:\|\ 
@@ -101,7 +104,10 @@ au VimEnter * silent execute '!echo -ne "\e[2 q\e]12;red\a\2"' | redraw!
 "endif
 "
 " set the path
-let &path = &path . "," . expand($HOME) . "/**"
+" let &path = &path . "," . expand($HOME) . "/**"
+let &path = &path . "," . expand($HOME) . "/v4l2/middleware/v1/modules/isp/cv186x/**"
+" set the tags
+set tags=~/v4l2/middleware/v1/modules/isp/tags
 "-------------------- customerized source files --------------------
 source ~/.vim/hgj-vim-config/func.vim " functions
 source ~/.vim/hgj-vim-config/hgj_command.vim " some commands
