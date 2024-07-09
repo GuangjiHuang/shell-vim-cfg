@@ -40,6 +40,7 @@ def operate_path(path_dict, op):
             return
         if not is_bd_dir_exists:
             os.makedirs(bd_dir)
+        os.system(f"rm -rf {bd}")
         os.system(f"cp -fr {src} {bd}")
         print(f"{src} -> {bd}")
 
@@ -49,6 +50,7 @@ def operate_path(path_dict, op):
             return
         if not is_dst_dir_exists:
             os.makedirs(dst_dir)
+        os.system(f"rm -rf {dst}")
         os.system(f"cp -fr {src} {dst}")
         print(f"{src} -> {dst}")
 
@@ -58,6 +60,7 @@ def operate_path(path_dict, op):
             return
         if not is_src_dir_exists:
             os.makedirs(src_dir)
+        os.system(f"rm -rf {src}")
         os.system(f"cp -fr {bd} {src}")
         print(f"{bd} -> {src}")
 
@@ -67,6 +70,7 @@ def operate_path(path_dict, op):
             return
         if not is_dst_dir_exists:
             os.makedirs(dst_dir)
+        os.system(f"rm -rf {dst}")
         os.system(f"cp -fr {bd} {dst}")
         print(f"{bd} -> {dst}")
 
@@ -76,6 +80,7 @@ def operate_path(path_dict, op):
             return
         if not is_src_dir_exists:
             os.makedirs(src_dir)
+        os.system(f"rm -rf {src}")
         os.system(f"cp -fr {dst} {src}")
         print(f"{dst} -> {src}")
 
@@ -85,6 +90,7 @@ def operate_path(path_dict, op):
             return
         if not is_bd_dir_exists:
             os.makedirs(bd_dir)
+        os.system(f"rm -rf {bd}")
         os.system(f"cp -fr {dst} {bd}")
         print(f"{dst} -> {bd}")
 

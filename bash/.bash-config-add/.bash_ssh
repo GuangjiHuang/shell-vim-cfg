@@ -15,35 +15,64 @@ export hgj_dp='hgj@172.27.50.240' # root, ubuntu, wire
 export hgj_lab='gjsq@202.38.214.68'  # window, wire
 export hgj_server='root@120.79.225.239' # ali server
 export tx2='root@202.38.214.223'     # ubuntu, wire
+export ws_401='guangji.huang@10.80.40.1'     # ubuntu, wire
+export ws_402='guangji.huang@10.80.40.2'     # ubuntu, wire
+export ws_403='guangji.huang@10.80.40.3'     # ubuntu, wire
 # file
 export gj_f=${hgj_pc_f}
 # ssh
 alias c-dp='ssh -Y ${hgj_dp}'
 alias c-lab='ssh -Y ${hgj_lab}'
 alias c-tx2='ssh -Y ${tx2}'
+alias c-401='ssh ${ws_401}'
+alias c-402='ssh ${ws_402}'
+alias c-403='ssh ${ws_403}'
 alias c-server='ssh -Y ${hgj_server}'
 # <<<<<<<<<
 
-# sq
+export router_ip='172.25.5.12'
+# device
 # >>>>>>>>>
-is_wire=1   # if not wire, set to 0(220, the scut214 is the xxx 222)
-if [ $is_wire -eq 1 ];then
-    # lab #
-    export dear_pc='root@202.38.214.122' # root, ubuntu, wire
-    export dear_pc_='ysq@202.38.214.122' # ysq, ubuntu, wire
-    # home #
-    #export dear_pc='root@192.168.1.101' # root, ubuntu, wire
-    #export dear_pc_='ysq@192.168.1.101' # ysq, ubuntu, wire
-elif [ $is_wire -eq 0 ];then
-    export dear_pc='root@218.192.172.105' # root, ubuntu, wifi
-    export dear_pc_='ysq@218.192.172.105' # ysq, ubuntu, wifi
-else
-    export dear_pc='root@202.38.214.222 -p 221' # root, ubuntu, wifi
-    export dear_pc_='ysq@202.38.214.222 -p 221' # ysq, ubuntu, wifi
-fi
-export dear_pc_f=${dear_pc}:/home/*/ftp
-alias c-dear='ssh -Y ${dear_pc}'
-alias c-dear_='ssh -Y ${dear_pc_}'
+export d_100='root@${router_ip}'
+export d_101='root@${router_ip}'
+export d_102='root@${router_ip}'
+export d_103='root@${router_ip}'
+export d_104='root@${router_ip}'
+export d_105='root@${router_ip}'
+export d_106='root@${router_ip}'
+export d_107='root@${router_ip}'
+export d_108='root@${router_ip}'
+alias d-100="ssh root@${router_ip} -p 20"
+alias d-101="ssh root@${router_ip} -p 21"
+alias d-102="ssh root@${router_ip} -p 22"
+alias d-103="ssh root@${router_ip} -p 23"
+alias d-104="ssh root@${router_ip} -p 24"
+alias d-105="ssh root@${router_ip} -p 25"
+alias d-106="ssh root@${router_ip} -p 26"
+alias d-107="ssh root@${router_ip} -p 27"
+alias d-108="ssh root@${router_ip} -p 28"
+# <<<<<<<<
+
+# edge
+# >>>>>>>>>
+export e_100="linaro@${router_ip}"
+export e_101="linaro@${router_ip}"
+export e_102="linaro@${router_ip}"
+export e_103="linaro@${router_ip}"
+export e_104="linaro@${router_ip}"
+export e_105="linaro@${router_ip}"
+export e_106="linaro@${router_ip}"
+export e_107="linaro@${router_ip}"
+export e_108="linaro@${router_ip}"
+alias e-100="ssh linaro@${router_ip} -p 20"
+alias e-101="ssh linaro@${router_ip} -p 21"
+alias e-102="ssh linaro@${router_ip} -p 22"
+alias e-103="ssh linaro@${router_ip} -p 23"
+alias e-104="ssh linaro@${router_ip} -p 24"
+alias e-105="ssh linaro@${router_ip} -p 25"
+alias e-106="ssh linaro@${router_ip} -p 26"
+alias e-107="ssh linaro@${router_ip} -p 27"
+alias e-108="ssh linaro@${router_ip} -p 28"
 # <<<<<<<<
 
 # scut

@@ -1,9 +1,22 @@
-"  =============================================================== "  >> <leader>+x <<  @Guangji Huang
+"  =============================================================== 
+"  >> <leader>+x <<  @Guangji Huang
 "  ===============================================================
 " -------------------------------------------a/A-------------------------------------------
 "  \a <append>
 "  append time
-nnoremap <leader>at :call Exec('echo strftime("%c")')<CR>
+" nnoremap <leader>at :call Exec('echo strftime("%c")')<CR>
+" use this for debug
+nnoremap <leader>ab :Break<CR>
+nnoremap <leader>aB :Tbreak<CR>
+nnoremap <leader>as :Step<CR>
+nnoremap <leader>an :Over<CR>
+nnoremap <leader>au :Until<CR>
+nnoremap <leader>af :Finish<CR>
+nnoremap <leader>ac :Continue<CR>
+nnoremap <leader>aS :Stop<CR>
+nnoremap <leader>aw :call TermDebugSendCommand('where')<CR>
+nnoremap <leader>al :call TermDebugSendCommand('locals')<CR>
+nnoremap <leader>aC :call TermDebugSendCommand('shell clear')<CR>
 
 " -------------------------------------------b/B-------------------------------------------
 "  \b
@@ -69,7 +82,7 @@ nnoremap <leader>iv :call IntoCodeEnv("vim")<CR>
 " \k
 " -------------------------------------------l/L-------------------------------------------
 " \l
-nnoremap <leader>l :Limelight!!<cr>
+nnoremap <leader>ll :Limelight!!<cr>
 " -------------------------------------------m/M-------------------------------------------
 " \m
 " -------------------------------------------n/N-------------------------------------------
@@ -80,6 +93,10 @@ nnoremap <leader>l :Limelight!!<cr>
 " \p
 " -------------------------------------------q/Q-------------------------------------------
 " \q
+nnoremap <leader>qq :q!<CR>
+"<quickfix> operation
+nnoremap <leader>qo :copen<CR>
+nnoremap <leader>qc :cclose<CR>
 " -------------------------------------------r/R-------------------------------------------
 " \r R
 " run the code
@@ -99,19 +116,28 @@ nnoremap <leader>rB :w \| !clear;bash %<CR>
 nnoremap <leader>rm :w \| !clear;cmake -P %<CR>
 " -------------------------------------------s/S-------------------------------------------
 " \s
-nnoremap <leader>s :source ~/.vimrc "\| echom "->Source the ~/.vimrc"<CR>
+nnoremap <leader>S :source ~/.vimrc \| echom "->Source the ~/.vimrc"<CR>
+"  edit func.vim
+nnoremap <leader>sf :e ~/.vim/hgj-vim-config/func.vim<CR>
+" edit map.vim
+nnoremap <leader>sm :e ~/.vim/hgj-vim-config/map.vim<CR>
+" edit plugin_setting.vim
+nnoremap <leader>sp :e ~/.vim/hgj-vim-config/plugin-setting.vim<CR>
+" edit .vimrc
+nnoremap <leader>ss :e ~/.vimrc<CR>
+"
 " -------------------------------------------t/T-------------------------------------------
-" \t  <tab, Tree>
+"  \t
 " <tab>
 nnoremap <leader>th :call ToggleTabBar()<CR>
 nnoremap <leader>te :tabedit 
-nnoremap <leader>tF :tabfind 
+"nnoremap <leader>tF :tabfind 
 nnoremap <leader>tc :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 nnoremap <leader>tp :tabp<CR>
 nnoremap <leader>tn :tabn<CR>
 nnoremap <leader>tl :tablast<CR>
-nnoremap <leader>tf :tabfirst<CR>
+"nnoremap <leader>tf :tabfirst<CR>
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
@@ -123,26 +149,35 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<CR>
 
-" <TREE>
-nnoremap <leader>T :NERDTree<CR>
-"nnoremap <leader>T :Ntree<CR>
+" <NERDTree>
+nnoremap <leader>tr :NERDTreeToggle<CR>
+nnoremap <leader>tR :NERDTree<CR>
+nnoremap <leader>T :NERDTreeFocus<CR>
+nnoremap <leader>tf :NERDTreeFind \| normal zz<CR>
+
 " -------------------------------------------u/U-------------------------------------------
 " \u
 " -------------------------------------------v/V-------------------------------------------
 " \v <vim>
-"  -> func.vim
-nnoremap <leader>vf :e ~/.vim/hgj-vim-config/func.vim<CR>
-" -> map.vim
-nnoremap <leader>vm :e ~/.vim/hgj-vim-config/map.vim<CR>
-" -> plugin_setting.vim
-nnoremap <leader>vp :e ~/.vim/hgj-vim-config/plugin_setting.vim<CR>
-" -> .vimrc
-nnoremap <leader>vs :e ~/.vimrc<CR>
-" ./install.sh vim
-nnoremap <leader>vi :call InstallVimToCfg()<CR>
+"nnoremap <leader>vt :exec strftime("e ~/mygithub/everyday-record/%Y-%m/%m-%d/temp.txt", localtime())<CR>
+nnoremap <leader>vq :call Wr("question", "")<CR>
+nnoremap <leader>vt :call Wr("temp", "")<CR>
+nnoremap <leader>vp :call Wr("plan", "")<CR>
+nnoremap <leader>vl :call Wr("learn", "")<CR>
+
+command! -nargs=1 WrQuestion :call Wr("question", <q-args>)
+command! -nargs=1 WrLearn :call Wr("learn", <q-args>)
+
+nnoremap <leader>vQ :WrQuestion <C-r>=input("")<CR><CR>
+nnoremap <leader>vL :WrLearn <C-r>=input("")<CR><CR>
+"nnoremap <leader>vT :call Wr("temp", "")<CR>
+"nnoremap <leader>vL :call Wr("learn", "")<CR>
 " -------------------------------------------w/W-------------------------------------------
 " \w
-nnoremap <leader>w :w<CR>
+" do deal with the terminal windwo
+nnoremap <leader>wb :call ToggleGDBTerminal("bash")<CR>
+nnoremap <leader>wd :call ToggleGDBTerminal("gdb")<CR>
+nnoremap <leader>wp :call ToggleGDBTerminal("program")<CR>
 " -------------------------------------------x/X-------------------------------------------
 " \x
 " -------------------------------------------y/Y-------------------------------------------
@@ -158,6 +193,9 @@ nnoremap zP :x<CR> | " save and then exit
 nnoremap <leader>% :call FindHeader()<CR>
 "
 "
+" -------------------------------------------%//-------------------------------------------
+" \/
+nnoremap <silent> <leader>/ :let @/ = ""<CR>
 "
 "  ---------------------------------------------------------------
 "  >> <custonm_leader>+x <<
@@ -178,28 +216,59 @@ inoremap jj <esc>
 inoremap <C-u> <esc>gUiwea
 
 " normal mappings
-"about the jump to the window quickly
+" window dealing
 nnoremap gw <c-w>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+" moving window
+" p: previous window, w: clockwise move
+nnoremap <space>h <c-w>h
+nnoremap <space>j <c-w>j
+nnoremap <space>k <c-w>k
+nnoremap <space>l <c-w>l
+nnoremap <space>p <c-w>p
+nnoremap <space>w <c-w>w
+nnoremap <space>W <c-w>W
+" resize window
+" =: equal size; <, >: width change; +,-: vertical change
+nnoremap <space>= <c-w>=
+nnoremap <space>< <c-w><
+nnoremap <space>> <c-w>>
+nnoremap <space>+ <c-w>+
+nnoremap <space>- <c-w>-
+nnoremap <space>_ <c-w>_
+nnoremap <space>\| <c-w>\|
+
+nnoremap <space>c <C-w>c
+nnoremap <space>o <C-w>o
+
+nnoremap <space><space> <C-w>=
+
+
+" move and exchange the window
+nnoremap <space>x <C-W>x
+nnoremap <space>H <C-W>H
+nnoremap <space>L <C-W>L
+
+
 "  ---------------------------------------------------------------
 "  >>  match braces <<
 "  ---------------------------------------------------------------
 inoremap {<CR> {<CR>}<C-o>O
-inoremap ( ()<esc>ha
-inoremap [ []<esc>ha
-inoremap " ""<esc>ha
-"inoremap ' ''<esc>ha
-"
-"inoremap kk <esc>la
 inoremap <c-l> <right>
 
 "  ---------------------------------------------------------------
 "  >> space insert mode <<
 "  ---------------------------------------------------------------
 inoremap <c-o> <esc>o
-inoremap <c-h> <esc>ciw
-"
+
+
+"  ---------------------------------------------------------------
+"  set the build
+"  ---------------------------------------------------------------
+set errorformat=%f:%l:%c:%t:%m
+nnoremap <F9> :make<CR>:copen<CR>
+

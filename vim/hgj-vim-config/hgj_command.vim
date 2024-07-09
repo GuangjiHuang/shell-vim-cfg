@@ -8,3 +8,11 @@ au BufRead,BufNewFile *.txt,*.goal,*.pratice :execute "normal zz\<Cr>"
 
 " the insert mode's abbreviation
 " iab ciw <esc>ciw " not the good idea
+"
+
+function! CheckTerminalSize()
+	exec "normal \<C-w>="
+endfunction
+
+"autocmd WinResized * call CheckTerminalSize()
+
