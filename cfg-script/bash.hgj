@@ -1,0 +1,37 @@
+[var]
+src_prefix : ~/mygithub/shell-vim-cfg/bash
+dst_prefix : ~
+bd_prefix : ~/opt/shell-vim-cfg-bd/bash
+
+[bash]
+
+1) .bashrc
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
+2) .bash_aliases
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
+3) .bashrc_func
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
+4) .bashrc_func
+	type: d
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
+5) .bash-config-add
+	type: d
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+

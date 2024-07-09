@@ -1,0 +1,105 @@
+# the bash_ssh: to control the ssh connetct, and maintain it
+# author: hgj
+# server's hostname and the ip adress
+# -----------------------------------------------------------------------------------------
+# hgj-dp : wifi(202.38.214.220 : 68)
+# sq-dp : 202.38.214.122
+# hgj-lab: 202.38.214.68
+#
+# -----------------------------------------------------------------------------------------
+
+# gj
+# >>>>>>>>>
+# ip 
+export hgj_dp='hgj@172.27.50.240' # root, ubuntu, wire
+export hgj_lab='gjsq@202.38.214.68'  # window, wire
+export hgj_server='root@120.79.225.239' # ali server
+export tx2='root@202.38.214.223'     # ubuntu, wire
+export ws_401='guangji.huang@10.80.40.1'     # ubuntu, wire
+export ws_402='guangji.huang@10.80.40.2'     # ubuntu, wire
+export ws_403='guangji.huang@10.80.40.3'     # ubuntu, wire
+# file
+export gj_f=${hgj_pc_f}
+# ssh
+alias c-dp='ssh -Y ${hgj_dp}'
+alias c-lab='ssh -Y ${hgj_lab}'
+alias c-tx2='ssh -Y ${tx2}'
+alias c-401='ssh ${ws_401}'
+alias c-402='ssh ${ws_402}'
+alias c-403='ssh ${ws_403}'
+alias c-server='ssh -Y ${hgj_server}'
+# <<<<<<<<<
+
+export router_ip='172.25.5.12'
+# device
+# >>>>>>>>>
+export d_100='root@${router_ip}'
+export d_101='root@${router_ip}'
+export d_102='root@${router_ip}'
+export d_103='root@${router_ip}'
+export d_104='root@${router_ip}'
+export d_105='root@${router_ip}'
+export d_106='root@${router_ip}'
+export d_107='root@${router_ip}'
+export d_108='root@${router_ip}'
+alias d-100="ssh root@${router_ip} -p 20"
+alias d-101="ssh root@${router_ip} -p 21"
+alias d-102="ssh root@${router_ip} -p 22"
+alias d-103="ssh root@${router_ip} -p 23"
+alias d-104="ssh root@${router_ip} -p 24"
+alias d-105="ssh root@${router_ip} -p 25"
+alias d-106="ssh root@${router_ip} -p 26"
+alias d-107="ssh root@${router_ip} -p 27"
+alias d-108="ssh root@${router_ip} -p 28"
+# <<<<<<<<
+
+# edge
+# >>>>>>>>>
+export e_100="linaro@${router_ip}"
+export e_101="linaro@${router_ip}"
+export e_102="linaro@${router_ip}"
+export e_103="linaro@${router_ip}"
+export e_104="linaro@${router_ip}"
+export e_105="linaro@${router_ip}"
+export e_106="linaro@${router_ip}"
+export e_107="linaro@${router_ip}"
+export e_108="linaro@${router_ip}"
+alias e-100="ssh linaro@${router_ip} -p 20"
+alias e-101="ssh linaro@${router_ip} -p 21"
+alias e-102="ssh linaro@${router_ip} -p 22"
+alias e-103="ssh linaro@${router_ip} -p 23"
+alias e-104="ssh linaro@${router_ip} -p 24"
+alias e-105="ssh linaro@${router_ip} -p 25"
+alias e-106="ssh linaro@${router_ip} -p 26"
+alias e-107="ssh linaro@${router_ip} -p 27"
+alias e-108="ssh linaro@${router_ip} -p 28"
+# <<<<<<<<
+
+# scut
+# >>>>>>>>>
+# ip
+export scut_M5000='root@202.38.214.222'
+export scut_1080='scut214@218.192.172.109'
+export scut_2080='scut@202.38.214.111'
+export scut_3080='scut@202.38.214.117'
+# file
+export scut_M5000_f=${scut_M5000}:/home/scut/ftp
+export scut_1080_f=${scut_1080}:/home/snr/ftp
+export tx2_f=${tx2}:/home/nvidia/ftp
+export s_f=${scut_M5000_f}
+export s1_f=${scut_1080_f}
+# ssh
+alias c-s='ssh -Y ${scut_M5000}'
+alias c_s='c-s' # to solve the problem of the confilct of the ctrl + c in the tmux
+alias c-s1='ssh -Y ${scut_1080}'
+alias c-s2='ssh -Y ${scut_2080}'
+alias c-s3='ssh -Y ${scut_3080}'
+# <<<<<<<<<
+
+#common
+# >>>>>>>>>
+# quickly go to the ftp
+export ftp=/home/*/ftp
+# change this file
+alias ip-c='vim ~/.bash-config-add/.bash_ssh'
+# <<<<<<<<<

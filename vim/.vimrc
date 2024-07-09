@@ -62,7 +62,9 @@ set fencs=utf-8,big5,gb18030,utf-16 "fileencodings
 
 " fold setting
 "set foldmethod=marker "{{{}}} as the fold marker
-set foldmethod=syntax
+"set foldmethod=syntax
+" to keep the folder close when open file
+set foldlevel=0
 
 " show space, tab, newline, end_of_line
 set listchars=tab:\|\ 
@@ -108,6 +110,11 @@ au VimEnter * silent execute '!echo -ne "\e[2 q\e]12;red\a\2"' | redraw!
 let &path = &path . "," . expand($HOME) . "/v4l2/middleware/v1/modules/isp/cv186x/**"
 " set the tags
 set tags=~/v4l2/middleware/v1/modules/isp/tags
+
+" highlight the tabline
+highlight TabLineSel ctermfg=red
+highlight TabLine ctermfg=yellow cterm=NONE
+
 "-------------------- customerized source files --------------------
 source ~/.vim/hgj-vim-config/func.vim " functions
 source ~/.vim/hgj-vim-config/hgj_command.vim " some commands

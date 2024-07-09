@@ -1,0 +1,359 @@
+#! /bin/bash
+
+myfind() {
+	if [ -n "$1" ]; then
+		find . -name "$1" 2>&1 | grep -v "Permission denied"
+	else
+		echo "Error: should input find what?"
+	fi
+}
+
+mygrep() {
+	if [ -n "$1" ]; then
+		#grep -r "$2" "$1" . # for example: mygrep "xxxx" -l
+		grep -rIn "$1" .
+	else
+		echo "Error: should input grep what?"
+	fi
+}
+
+repo_sync()
+{
+	repo sync -d && \
+	repo forall -c 'git reset --hard'
+	repo forall -c 'git clean -f -d'
+}
+
+cdx()
+{
+	if ! type fzf &> /dev/null;then
+		echo "fzf not exist, please install first!"
+		return
+	fi
+
+	if [ -n $1 -a -d $1 ]; then
+		tmp_file=$(find $1 | fzf)
+	else
+		tmp_file=$(fzf)
+	fi
+
+	if [ -z $tmp_file ]; then
+		return
+	fi
+
+	if [ -d $tmp_file ]; then
+		tmp_dir=$tmp_file
+	else
+		tmp_dir=$(dirname $tmp_file)
+	fi
+
+	echo -e $PWD "->" ${GREEN}$tmp_dir${NOCOLOR}
+	cd $tmp_dir
+}
+
+bearx()
+{
+	compile_commands_json_path=compile_commands.json
+
+	if ! type bear &> /dev/null; then
+		echo "bear not exists, please install first!"
+		return
+	fi
+
+	bear make
+
+	if [ ! -f ${compile_commands_json_path} ]; then
+		echo "compile_commands.json not exists!"
+		return
+	fi
+
+	# replace
+	cross_compiler='aarch64-linux-gnu-gcc'
+	local_compiler='gcc'
+	cross_compiler_cxx='aarch64-linux-gnu-g++'
+	local_compiler_cxx='g++'
+	sed -i "s/${cross_compiler}/${local_compiler}/g" ${compile_commands_json_path}
+	sed -i 's/${cross_compiler_cxx}/${local_compiler_cxx}/g' ${compile_commands_json_path}
+}
+
+pr_info()
+{
+	echo -e "\e[1;31m ${1} \e[0m"
+}
+
+show_ret()
+{
+	echo -n "ret: $1,"
+	if [ "$1" -eq 0 ]; then
+		echo -e "\e[1;32m Success \e[0m"
+	else
+		echo -e "\e[1;31m Fail \e[0m"
+	fi
+}
+
+
+bear_make()
+{
+	CCJ="compile_commands.json"
+	OCC="aarch64-linux-gnu-gcc"
+	OCXX="aarch64-linux-gnu-g++"
+	#LCC="gcc"
+	#LCXX="g++"
+	LCC="clang"
+	LCXX="clang"
+
+	if [ -f $CCJ ]; then
+		bear -a make $@
+	else
+		bear make $@
+	fi
+
+	ret_val=$?
+	sed -i "s/${OCC}/${LCC}/g" ${CCJ}
+	sed -i "s/${OCXX}/${LCXX}/g" ${CCJ}
+	return $ret_val
+}
+
+bear_make_rtsp()
+{
+	# rtsp
+	pr_info "-------------------- bear make rtsp start... --------------------"
+
+	if [ -z $TOP_DIR ]; then
+		echo "TOP_DIR is null, you should config the env first!"
+		return 1
+	fi
+
+	RTSP_PATH=$TOP_DIR/cvi_rtsp
+
+	cd $RTSP_PATH
+
+	local CC=${CROSS_COMPILE}gcc
+	local CXX=${CROSS_COMPILE}g++
+	local AR=${CROSS_COMPILE}ar
+	local RANLIB=${CROSS_COMPILE}ranlib
+	local LIVE555_DIR=$PWD/prebuilt
+
+	local MW_DIR=$TOP_DIR/middleware/$MW_VER
+
+	if [ "$1" == "clean" ]; then
+		clean_cvi_rtsp
+		test -f "compile_commands.json" && rm -f "compile_commands.json"
+	fi
+
+	echo 
+
+	bear_make CC=${CC} CXX=${CC} RANLIB=${RANLIB} LIVE555_DIR=${LIVE555_DIR} MW_DIR=${MW_DIR} BUILD_SERVICE=1
+	cvi_rtsp_ret=$?
+ 	pr_info "-------------------- bear make rtsp end! --------------------"
+}
+
+make_clean()
+{
+	if [ "$1" == "clean" ]; then
+		rm -f compile_commands.json
+		make clean
+	fi
+}
+
+make_compile_json()
+{
+	if ! type bear &> /dev/null; then
+		echo "no bear exists, please install first!"
+		return 1
+	fi
+
+	if [ -z $TOP_DIR ]; then
+		echo "TOP_DIR is null, you should config the env first!"
+		return 1
+	fi
+
+	# isp 
+	MW_PATH=$TOP_DIR/middleware/$MW_VER/modules
+	ISP_PATH=$MW_PATH/isp
+
+	# mw
+	ISP_D_PATH=$MW_PATH/isp/cv186x/isp-tool-daemon/isp_daemon_tool
+	MW_BIN_PATH=$MW_PATH/bin
+	MW_VI_PATH=$MW_PATH/vi
+	MW_VPSS_PATH=$MW_PATH/vpss
+	MW_SYS_PATH=$MW_PATH/sys
+
+	# args
+	ARGS=""
+	if [ "$1" == "clean" ]; then
+		ARGS="clean"
+	fi
+
+	MARK_PATH=$PWD
+	# isp
+	pr_info "-------------------- bear make isp start... --------------------"
+	pr_info " +++ isp mw +++"
+	cd $ISP_PATH
+	make_clean $ARGS
+	bear_make 
+	isp_ret=$?
+	pr_info " +++ isp daemon +++"
+	cd $ISP_D_PATH
+	make_clean $ARGS
+	bear_make 
+	isp_daemon_ret=$?
+	pr_info "-------------------- bear make isp end! --------------------"
+
+	# mw
+	pr_info "-------------------- bear make mw start... --------------------"
+	pr_info "+++ bin +++"
+	cd $MW_BIN_PATH
+	make_clean $ARGS
+	bear_make 
+	mw_bin_ret=$?
+	pr_info "+++ vi +++"
+	cd $MW_VI_PATH
+	make_clean $ARGS
+	bear_make 
+	mw_vi_ret=$?
+	pr_info "+++ vpss +++"
+	cd $MW_VPSS_PATH
+	make_clean $ARGS
+	bear_make
+	mw_vpss_ret=$?
+	pr_info "+++ sys +++"
+	cd $MW_SYS_PATH
+	make_clean $ARGS
+	bear_make
+	mw_sys_ret=$?
+	pr_info "-------------------- bear make mw end! --------------------"
+
+	# rtsp
+	RTSP_PATH=$TOP_DIR/cvi_rtsp
+	bear_make_rtsp $ARGS
+
+	# go back to the mark path
+	cd $MARK_PATH
+
+	pr_info "-------------------- bear make result --------------------"
+	echo -n "isp: "
+	show_ret $isp_ret
+	echo -n "isp daemon: "
+	show_ret $isp_daemon_ret
+	echo -n "mw bin: "
+	show_ret $mw_bin_ret
+	echo -n "mw vi: "
+	show_ret $mw_vi_ret
+	echo -n "vpss: "
+	show_ret $mw_vpss_ret
+	echo -n "sys: "
+	show_ret $mw_sys_ret
+	echo -n "cvi rtsp: "
+	show_ret $cvi_rtsp_ret
+	pr_info "-------------------- bear make result --------------------"
+	pr_info "-------------------- merge json file --------------------"
+	python3 ~/.bash_func/merge_json_file.py $TOP_DIR {$ISP_PATH,$ISP_D_PATH,$MW_BIN_PATH,$MW_VI_PATH,$MW_VPSS_PATH,$MW_SYS_PATH,$RTSP_PATH}/compile_commands.json
+}
+
+source_edge()
+{
+	pushd $PWD
+	cd ~/v4l2
+	source build/envsetup_soc.sh
+	defconfig bm1688_wevb_emmc
+	popd
+}
+
+source_a2()
+{
+	pushd $PWD
+	cd ~/a2
+	source build/envsetup_soc.sh
+	defconfig cv186ah_wevb_emmc
+	popd
+}
+
+
+make_compile_json_edge()
+{
+	if ! type bear &> /dev/null; then
+		echo "no bear exists, please install first!"
+		return 1
+	fi
+
+	if [ -z $TOP_DIR ]; then
+		echo "TOP_DIR is null, you should config the env first!"
+		return 1
+	fi
+
+	V4L2_ISP_ENABLE=1
+
+	ORIGINAL_LOCATION=$PWD
+
+	# args
+	ARGS=""
+	if [ "$1" == "clean" ]; then
+		ARGS="clean"
+	fi
+
+	ISP_V4L2_SRC_PATH=${TOP_DIR}/middleware/${MW_VER}/modules/isp/cv186x
+
+	SENSOR_PATH=${TOP_DIR}/middleware/${MW_VER}/component/isp
+	CVI_BIN_PATH=${TOP_DIR}/middleware/${MW_VER}/modules/bin
+	CVI_VENC_PATH=${TOP_DIR}/middleware/${MW_VER}/modules/vcodec
+	EDGE_ISP_PATH=$ISP_V4L2_SRC_PATH 
+	ISP_TOOL_DAEMON_V4L2_PATH=$ISP_V4L2_SRC_PATH/isp-tool-daemon-v4l2
+	ISP_TOOL_V4L2_UT_PATH=${TOP_DIR}/middleware/${MW_VER}/self_test/ispv4l2_ut
+
+	#echo "build 3rd party ..."
+	#build_3rd_party
+	#cd ${TOP_DIR}/middleware/${MW_VER}/3rdparty || return $?
+	#bear_make all
+
+	pr_info "-------------------- bear make sensor start... --------------------"
+	pr_info " +++ sensor +++"
+	echo "build sensor ..."
+	cd $SENSOR_PATH
+	make_clean $ARGS
+	bear_make all
+
+	pr_info "-------------------- bear make cvi bin start... --------------------"
+	pr_info " +++ cvi bin +++"
+	echo "build cvi bin ..."
+	cd $CVI_BIN_PATH
+	make_clean $ARGS
+	bear_make all
+
+	pr_info "-------------------- bear make cvi venc start... --------------------"
+	pr_info " +++ cvi venc +++"
+	echo "build cvi venc ..."
+	cd $CVI_VENC_PATH
+	make_clean $ARGS
+	bear_make all
+
+	pr_info "-------------------- bear make isp start... --------------------"
+	pr_info " +++ isp +++"
+	echo "build isp ..."
+	cd $EDGE_ISP_PATH
+	make_clean $ARGS
+	bear_make all
+
+	pr_info "-------------------- bear make isp tool daemon v4l2 start... --------------------"
+	pr_info " +++ isp tool daemon v4l2 +++"
+	# build isp-tool-daemon-v4l2
+	cd $ISP_TOOL_DAEMON_V4L2_PATH
+	make_clean $ARGS
+	bear_make all
+
+	pr_info "-------------------- bear make isp v4l2 ut start... --------------------"
+	pr_info " +++ isp v4l2 ut +++"
+	echo "build ispv4l2_ut ..."
+	cd $ISP_TOOL_V4L2_UT_PATH
+	make_clean $ARGS
+	bear_make all
+
+	cd $ORIGINAL_LOCATION
+
+	V4L2_ISP_ENABLE=0
+
+	# merge the file
+	python3 ~/.bash_func/merge_json_file.py $TOP_DIR {$SENSOR_PATH,$CVI_BIN_PATH,$CVI_VENC_PATH,$EDGE_ISP_PATH,$ISP_TOOL_DAEMON_V4L2_PATH,$ISP_TOOL_V4L2_UT_PATH}/compile_commands.json
+
+}	
+

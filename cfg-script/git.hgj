@@ -1,0 +1,18 @@
+[var]
+src_prefix : ~/mygithub/shell-vim-cfg/git
+dst_prefix : ~
+bd_prefix : ~/opt/shell-vim-cfg-bd/git
+
+[git]
+
+1) .gitconfig
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
+2) .global_gitignore
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}

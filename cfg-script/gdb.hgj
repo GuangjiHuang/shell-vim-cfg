@@ -1,0 +1,18 @@
+[var]
+src_prefix : ~/mygithub/shell-vim-cfg/gdb
+dst_prefix : ~
+bd_prefix : ~/opt/shell-vim-cfg-bd/gdb
+
+[gdb]
+
+1) .gdbinit
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
+2) gdbinit
+	type: d
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}

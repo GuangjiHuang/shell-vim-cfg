@@ -1,0 +1,13 @@
+[var]
+src_prefix : ~/mygithub/shell-vim-cfg/tmux
+dst_prefix : ~
+bd_prefix : ~/opt/shell-vim-cfg-bd/tmux
+
+[tmux]
+
+1) .tmux.conf
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
