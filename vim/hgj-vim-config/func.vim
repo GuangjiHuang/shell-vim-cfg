@@ -346,6 +346,7 @@ if s_month > 12 or s_month < 1:
 if s_day > 31 or s_day < 0:
 	print(f"invalid day: {s_day}")
 output_path = f"~/mygithub/everyday-record/{s_year}-{s_month:02}/{s_month:02}-{s_day:02}/{topic}.txt"
+output_path = os.path.expanduser(output_path)
 #print(f"output_path: {output_path}")
 if not os.path.exists(output_path):
 	if s_year == c_year and s_month == c_month and s_day == c_day:
