@@ -1,0 +1,9 @@
+[user]
+	email = guangji.huang@sophgo.com
+	name = guangji.huang
+[color]
+	ui = auto
+#hooksPath = /opt/jenkins_ci/jenkins_ci/codecheck/hooks
+[core]
+	excludesfile = /data/guangji.huang/.global_gitignore
+	hooksPath = /data/guangji.huang

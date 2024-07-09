@@ -107,3 +107,11 @@ alias base='conda activate base'
 alias hgj='ps -ef | grep hgj'
 alias stop='pgrep -f "sys-detect" | xargs sudo kill -9; pgrep -f "hgj" | xargs sudo kill -9'
 alias start='. /opt/startup/hgj_startup.sh'
+alias git_check='git show | ~/cvitek/linux_5.10/scripts/checkpatch.pl --no-signoff -q --max-line-length=120 --no-tree -ignore BAD_SIGN_OFF,GERRIT_CHANGE_ID,FILE_PATH_CHANGES,REDUNDANT_CODE,GCC_BINARY_CONSTANT,GIT_COMMIT_ID,BRACES,SPDX_LICENSE_TAG,TYPO_SPELLING,MISSING_EOF_NEWLINE,LINUX_VERSION_CODE,NOT_UNIFIED_DIFF,NEW_TYPEDEFS,DEPRECATED_VARIABLE,EXECUTE_PERMISSIONS'
+
+# ******************** run the cmodel ********************
+alias run='cmake .. && make -j && ./isp-tool-daemon-cmodel'
+
+# ******************** git hook and unhook ********************
+alias git_hook='git config --global core.hooksPath /opt/jenkins_ci/jenkins_ci/codecheck/hooks'
+alias git_unhook='git config --global core.hooksPath ~'

@@ -149,6 +149,8 @@ to()
 #export LANG='en_US'
 #export LANG='UTF-8'
 
+export EDITOR="vim"
+
 #------ vscode, clion and pycharm use the cygwin as the terminal -------
 # win and env meet the need
 if [[ $(uname) =~ CYGWIN.* ]] && [ $OLDPWD ] && [ $TERMINAL_EMULATOR -o $TERM_PROGRAM ];then
@@ -160,3 +162,20 @@ fi
 if [[ ! $(uname) == "Linux" ]];then
     export DISPLAY=:0.0
 fi
+
+
+# add the ~/usr/bin to the PATH
+export PATH=~/bin:${PATH}
+export PATH=~/usr/bin:${PATH}
+export PATH=~/usr/local/bin:${PATH}
+export PATH=${PATH}:~/opt/c-linter/cquery/build/release/bin:~/opt/c-linter/clang-llvm-13.0.1/bin:~/opt/c-linter/ccls/Release
+
+
+# source the .bashrc_func
+if [ -f ~/.bashrc_func ]; then
+	source ~/.bashrc_func
+fi
+
+# config the autojump
+. /usr/share/autojump/autojump.sh
+. /usr/local/bin/z.sh
