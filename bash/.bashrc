@@ -177,5 +177,11 @@ if [ -f ~/.bashrc_func ]; then
 fi
 
 # config the autojump
-. /usr/share/autojump/autojump.sh
-. /usr/local/bin/z.sh
+auto_jump_run_path=/usr/share/autojump/autojump.sh
+z_sh_path=/usr/local/bin/z.sh
+if [ -f $auto_jump_run_path ]; then
+	. $auto_jump_run_path
+fi
+if [ -f $z_sh_path ]; then
+	. $z_sh_path
+fi
