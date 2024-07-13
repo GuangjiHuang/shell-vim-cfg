@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import os
 import time
 import sys
@@ -163,7 +164,8 @@ if __name__ == "__main__":
                     "vim.hgj",
                     "tmux.hgj",
                     "git.hgj",
-                    "input.hgj"
+                    "input.hgj",
+                    "gdb.hgj"
                     ]
 
     block_ls = []
