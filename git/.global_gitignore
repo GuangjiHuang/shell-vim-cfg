@@ -7,6 +7,8 @@ a.out
 
 *.bd
 
+json_error
+
 sophon-soc-libisp-dev_1.0.0/
 sophon-soc-libisp_1.0.0/
 sophon-soc-libisp_1.0.0_arm64.deb

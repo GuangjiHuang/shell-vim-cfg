@@ -391,4 +391,40 @@ function! ToggleGDBTerminal(terminal_name)
 endfunction
 
 "-----------------------------------------------------------------------------------------
+function! HighlightFunction(is_c_block)
+    let l:filetype = &filetype
+
+    if l:filetype == 'c' || l:filetype == 'cpp'
+		if a:is_c_block
+			let l:save_cursor = getpos(".")
+			let l:start = search('\s*{', 'b')
+			normal %
+			let l:end = getpos(".")[1]
+			call setpos('.', l:save_cursor)
+		else
+			let l:start = search('^[a-zA-Z].*(\+', 'nbW')
+			let l:end = search('^}\s*$', 'nW')
+		endif
+    elseif l:filetype == 'python'
+        let l:start = search('^\s*def\s\+\S\+\s*(.*)\s*:', 'nb')
+        let l:end = search('^\s*\(return\|pass\|raise\|yield\|continue\|break\)\s*$', 'nW')
+    elseif l:filetype == 'vim'
+		let l:start = search('^\s*function!\?\s\+\S\+\s*(.*)\s*$', 'nb')
+        let l:end = search('^\s*endfunction\s*$', 'nW')
+    else
+        echo "Unsupported filetype"
+        return
+    endif
+
+    if l:start >= 0 && l:end > 0
+        execute l:start . ',' . l:end . 'Limelight'
+    else
+        echo "start" . l:start . ", end: " . l:end . ", Function not found"
+    endif
+endfunction
+
+nnoremap <leader>lf :call HighlightFunction(0)<CR>
+nnoremap <leader>lb :call HighlightFunction(1)<CR>
 "
+"-----------------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------------------

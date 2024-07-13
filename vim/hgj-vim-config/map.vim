@@ -21,6 +21,7 @@ nnoremap <leader>aC :call TermDebugSendCommand('shell clear')<CR>
 " -------------------------------------------b/B-------------------------------------------
 "  \b
 nnoremap <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <leader>bc :bufdo if !bufwinnr(bufnr('%'))<bar>bd<bar>endif<CR>
 " -------------------------------------------c/C-------------------------------------------
 "  \c C <comment>
 au FileType cpp,c nnoremap <buffer> <leader>c I//<esc>
