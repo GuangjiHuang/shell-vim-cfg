@@ -168,14 +168,20 @@ nnoremap <leader>vt :call Wr("temp", "")<CR>
 nnoremap <leader>vp :call Wr("plan", "")<CR>
 nnoremap <leader>vl :call Wr("learn", "")<CR>
 nnoremap <leader>vc :call Wr("code", "")<CR>
+nnoremap <leader>va :call Wr("arragement", "")<CR>
+nnoremap <leader>vr :call Wr("record", "")<CR>
 
 command! -nargs=1 WrQuestion :call Wr("question", <q-args>)
 command! -nargs=1 WrLearn :call Wr("learn", <q-args>)
 command! -nargs=1 WrCode :call Wr("code", <q-args>)
+command! -nargs=1 WrArragement :call Wr("arragement", <q-args>)
+command! -nargs=1 WrRecord :call Wr("record", <q-args>)
 
 nnoremap <leader>vQ :WrQuestion <C-r>=input("")<CR><CR>
 nnoremap <leader>vL :WrLearn <C-r>=input("")<CR><CR>
 nnoremap <leader>vC :WrCode <C-r>=input("")<CR><CR>
+nnoremap <leader>vA :WrArragement <C-r>=input("")<CR><CR>
+nnoremap <leader>vR :WrRecord <C-r>=input("")<CR><CR>
 "nnoremap <leader>vT :call Wr("temp", "")<CR>
 "nnoremap <leader>vL :call Wr("learn", "")<CR>
 " -------------------------------------------w/W-------------------------------------------

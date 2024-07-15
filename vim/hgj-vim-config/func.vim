@@ -305,7 +305,7 @@ output_path = ""
 vim.vars['wr_output_path'] = output_path
 topic = vim.eval('a:topic')
 date = vim.eval('a:date')
-if topic not in ["temp", "plan", "question", "learn", "code"]:
+if topic not in ["temp", "plan", "question", "learn", "code", "arragement", "record"]:
 	exit
 
 # deal the date
