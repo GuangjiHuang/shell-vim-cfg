@@ -345,7 +345,7 @@ if s_month > 12 or s_month < 1:
 	print(f"invalid month: {s_month}")
 if s_day > 31 or s_day < 0:
 	print(f"invalid day: {s_day}")
-output_path = f"~/mygithub/everyday-record/{s_year}-{s_month:02}/{s_month:02}-{s_day:02}/{topic}.txt"
+output_path = f"~/mygithub/everyday-record/{s_year}/{s_year}-{s_month:02}/{s_month:02}-{s_day:02}/{topic}.txt"
 output_path = os.path.expanduser(output_path)
 #print(f"output_path: {output_path}")
 if not os.path.exists(output_path):
@@ -449,7 +449,7 @@ function! WriteVisualToFile()
     let l:info = printf("[%s], %s, %d", l:datetime, l:filename, l:line)
 	let l:info_ls = ["", "", l:info, ""]
 
-	let l:code_path = "~/mygithub/everyday-record/" . strftime("%Y-%m/%m-%d/code.txt")
+	let l:code_path = "~/mygithub/everyday-record/" . strftime("%Y/%Y-%m/%m-%d/code.txt")
 	echom "the code path is the: " . l:code_path
 
 	if !filereadable(l:code_path)
