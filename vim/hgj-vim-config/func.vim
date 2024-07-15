@@ -305,7 +305,7 @@ output_path = ""
 vim.vars['wr_output_path'] = output_path
 topic = vim.eval('a:topic')
 date = vim.eval('a:date')
-if topic not in ["temp", "plan", "question", "learn"]:
+if topic not in ["temp", "plan", "question", "learn", "code"]:
 	exit
 
 # deal the date
@@ -426,5 +426,47 @@ endfunction
 nnoremap <leader>lf :call HighlightFunction(0)<CR>
 nnoremap <leader>lb :call HighlightFunction(1)<CR>
 "
+"-----------------------------------------------------------------------------------------
+function! WriteVisualToFile()
+    " Save the current register and cursor position
+    let l:save_reg = @"
+    let l:save_cursor = getpos(".")
+    let l:save_visual = getpos("v")
+
+    " Get the visual selection
+    normal! gv"xy
+
+    " Get the current date and time
+    let l:datetime = strftime("%Y-%m-%d %H:%M:%S")
+
+    " Get the current filename
+    let l:filename = expand("%:p:t")
+
+    " Get the current line number
+    let l:line = l:save_cursor[1]
+
+    " Prepare the extra information
+    let l:info = printf("[%s], %s, %d", l:datetime, l:filename, l:line)
+	let l:info_ls = ["", "", l:info, ""]
+
+	let l:code_path = "~/mygithub/everyday-record/" . strftime("%Y-%m/%m-%d/code.txt")
+	echom "the code path is the: " . l:code_path
+
+	if !filereadable(l:code_path)
+		echom l:code_path . " not exists! Run the wr first ..."
+		system('wr >/dev/null')
+
+    " Open the file and append the extra information and visual selection
+    execute 'silent! call writefile(l:info_ls, l:code_path, "a")'
+    execute 'silent! call writefile(split(@x, "\n"), l:code_path, "a")'
+
+    " Restore the register and cursor position
+    let @x = l:save_reg
+    call setpos('.', l:save_cursor)
+    "call setpos('v', l:save_visual)
+endfunction
+
+vnoremap <leader>wf :<C-U>call WriteVisualToFile()<CR>
+
 "-----------------------------------------------------------------------------------------
 "-----------------------------------------------------------------------------------------

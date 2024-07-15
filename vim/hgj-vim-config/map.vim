@@ -70,6 +70,8 @@ nnoremap <leader>gy :Goyo 60%x100%<Cr>
 nnoremap <leader>hh :Highlight h<CR>
 " cancle the highlight
 nnoremap <leader>hn :Highlight n<CR>
+inoremap hw <esc>bdiwa
+inoremap hW <esc>bdiWa
 " -------------------------------------------i/I-------------------------------------------
 " \i <into the code env>
 nnoremap <leader>ib :call IntoCodeEnv("bash")<CR>
@@ -165,12 +167,15 @@ nnoremap <leader>vq :call Wr("question", "")<CR>
 nnoremap <leader>vt :call Wr("temp", "")<CR>
 nnoremap <leader>vp :call Wr("plan", "")<CR>
 nnoremap <leader>vl :call Wr("learn", "")<CR>
+nnoremap <leader>vc :call Wr("code", "")<CR>
 
 command! -nargs=1 WrQuestion :call Wr("question", <q-args>)
 command! -nargs=1 WrLearn :call Wr("learn", <q-args>)
+command! -nargs=1 WrCode :call Wr("code", <q-args>)
 
 nnoremap <leader>vQ :WrQuestion <C-r>=input("")<CR><CR>
 nnoremap <leader>vL :WrLearn <C-r>=input("")<CR><CR>
+nnoremap <leader>vC :WrCode <C-r>=input("")<CR><CR>
 "nnoremap <leader>vT :call Wr("temp", "")<CR>
 "nnoremap <leader>vL :call Wr("learn", "")<CR>
 " -------------------------------------------w/W-------------------------------------------
