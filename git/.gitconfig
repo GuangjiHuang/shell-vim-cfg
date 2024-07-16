@@ -6,7 +6,7 @@
 #hooksPath = /opt/jenkins_ci/jenkins_ci/codecheck/hooks
 [core]
 	excludesfile = /data/guangji.huang/.global_gitignore
-	hooksPath = /data/guangji.huang
+	hooksPath = /opt/jenkins_ci/jenkins_ci/codecheck/hooks
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3

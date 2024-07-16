@@ -447,17 +447,22 @@ function! WriteVisualToFile()
 
     " Prepare the extra information
     let l:info = printf("[%s], %s, %d", l:datetime, l:filename, l:line)
-	let l:info_ls = ["", "", l:info, ""]
+	let l:info_ls = ["", "", l:info]
 
-	let l:code_path = "~/mygithub/everyday-record/" . strftime("%Y/%Y-%m/%m-%d/code.txt")
-	echom "the code path is the: " . l:code_path
+	let l:code_path = expand("~/mygithub/everyday-record/" . strftime("%Y/%Y-%m/%m-%d/code.txt"))
+	"echom "the code path is the: " . l:code_path
 
 	if !filereadable(l:code_path)
 		echom l:code_path . " not exists! Run the wr first ..."
 		system('wr >/dev/null')
+	endif
+
+	let l:source_abs_path = expand("%:p")
+	let l:source_abs_path = l:source_abs_path . ":" . l:line
 
     " Open the file and append the extra information and visual selection
     execute 'silent! call writefile(l:info_ls, l:code_path, "a")'
+    execute 'silent! call writefile([l:source_abs_path, ""], l:code_path, "a")'
     execute 'silent! call writefile(split(@x, "\n"), l:code_path, "a")'
 
     " Restore the register and cursor position
