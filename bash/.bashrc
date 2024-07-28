@@ -47,7 +47,14 @@ fi
 # change this -by hgj
 color_prompt=yes
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
+	user_name=$(whoami)
+	host_name=$(uname -n)
+	if [[ "$user_name" =~ guangji && "$host_name" =~ .*workstation.* ]]; then
+		hgj_custom_string="[HGJ-0${host_name: -1}]"
+		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]${hgj_custom_string}\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
+	else
+		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
+	fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

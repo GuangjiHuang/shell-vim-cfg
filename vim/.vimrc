@@ -122,3 +122,7 @@ source ~/.vim/hgj-vim-config/map.vim
 source ~/.vim/hgj-vim-config/plugin-setting.vim " plugin settigns
 source ~/.vim/hgj-vim-config/spelling-corect.vim "corect the spelling mistakes
 
+if &diff
+	source ~/.vim/hgj-vim-config/vimdiffrc.vim
+endif
+

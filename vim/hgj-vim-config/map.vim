@@ -1,4 +1,4 @@
-"  =============================================================== 
+" =============================================================== 
 "  >> <leader>+x <<  @Guangji Huang
 "  ===============================================================
 " -------------------------------------------a/A-------------------------------------------
@@ -39,6 +39,9 @@ command! DeleteBuffer execute '%bd|e #|normal `"'
 nnoremap <leader>db :DeleteBuffer<CR>
 " delete the % file
 nnoremap <leader>D% :!rm % \| redraw!<CR>
+" vimdiff
+"nnoremap dp [c
+"nnoremap dn ]c
 " -------------------------------------------e/E-------------------------------------------
 " \e
 " ex command
@@ -64,14 +67,15 @@ nnoremap <leader>fD :call GoBackToFunctionDefinition("forward")<CR>
 " \g 
 " Goyo
 nnoremap <leader>gy :Goyo 60%x100%<Cr>
+nnoremap <leader>gw :vimgrep /<C-R>=expand("<cword>")<CR>/gj **/*.h **/*.c **/*.cpp
 " -------------------------------------------h/H-------------------------------------------
 " \h
 " hight light the line
 nnoremap <leader>hh :Highlight h<CR>
 " cancle the highlight
 nnoremap <leader>hn :Highlight n<CR>
-inoremap hw <esc>bdiwa
-inoremap hW <esc>bdiWa
+inoremap hw <esc>ciw
+inoremap hW <esc>ciW
 " -------------------------------------------i/I-------------------------------------------
 " \i <into the code env>
 nnoremap <leader>ib :call IntoCodeEnv("bash")<CR>
@@ -128,6 +132,11 @@ nnoremap <leader>sm :e ~/.vim/hgj-vim-config/map.vim<CR>
 nnoremap <leader>sp :e ~/.vim/hgj-vim-config/plugin-setting.vim<CR>
 " edit .vimrc
 nnoremap <leader>ss :e ~/.vimrc<CR>
+" edit the bash
+nnoremap <leader>sbs :e ~/.bashrc<CR>
+nnoremap <leader>sba :e ~/.bash_aliases<CR>
+" edit the git
+nnoremap <leader>sg :e ~/.gitconfig<CR>
 "
 " -------------------------------------------t/T-------------------------------------------
 "  \t
@@ -186,10 +195,12 @@ nnoremap <leader>vR :WrRecord <C-r>=input("")<CR><CR>
 "nnoremap <leader>vL :call Wr("learn", "")<CR>
 " -------------------------------------------w/W-------------------------------------------
 " \w
-" do deal with the terminal windwo
+" do deal with the terminal window
 nnoremap <leader>wb :call ToggleGDBTerminal("bash")<CR>
 nnoremap <leader>wd :call ToggleGDBTerminal("gdb")<CR>
 nnoremap <leader>wp :call ToggleGDBTerminal("program")<CR>
+" write to the register
+" in the function file 
 " -------------------------------------------x/X-------------------------------------------
 " \x
 " -------------------------------------------y/Y-------------------------------------------

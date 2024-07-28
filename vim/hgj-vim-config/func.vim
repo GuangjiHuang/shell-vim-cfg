@@ -324,7 +324,16 @@ else:
 		if s_day.isdigit():
 			s_day = int(s_day)
 		else:
-			exit
+			# if is the nagetive value: for example *3
+			nvalue = date_ls[0].strip()
+			if nvalue.startswith("*") and nvalue[1:].isdigit():
+				nvalue = int(nvalue[1:])
+			else:
+				nvalue = len(nvalue)
+			target_tm = time.time() - nvalue * 24 * 3600
+			target_tm_tm = time.localtime(target_tm)
+			s_year, s_month, s_day = target_tm_tm.tm_year, target_tm_tm.tm_mon, target_tm_tm.tm_mday
+
 	elif len(date_ls) == 2:
 		s_month, s_day = date_ls
 		if s_month.isdigit() and s_day.isdigit():
@@ -473,5 +482,23 @@ endfunction
 
 vnoremap <leader>wf :<C-U>call WriteVisualToFile()<CR>
 
+"-----------------------------------------------------------------------------------------
+" write the register to the file: ~/opt/myscript/wr-script/register-clipboard
+" Function to write the content of a register to a file
+function! WriteRegisterToFile(register)
+  " Get the content of the register
+  let l:content = getreg(a:register)
+  " Determine the filename based on the register
+  let l:filename = '~/opt/myscript/wr-script/register-clipboard/' . a:register
+  let l:filename = expand(l:filename)
+  " Open the file and write the content to it
+  call writefile(split(l:content, "\n"), l:filename)
+  echo 'Written register ' . a:register . ' to ' . l:filename
+endfunction
+
+" Map <leader>w[a-z] to write the register content to file_[a-z].txt
+for c in range(char2nr('a'), char2nr('z'))
+  execute 'nnoremap <leader>W' . nr2char(c) . ' :call WriteRegisterToFile("' . nr2char(c) . '")<CR>'
+endfor
 "-----------------------------------------------------------------------------------------
 "-----------------------------------------------------------------------------------------

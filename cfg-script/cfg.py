@@ -155,8 +155,25 @@ def parser_file(file_name):
     else:
         return {session_name: {}}
 
+def Exit(ret_id, cur_dir):
+    os.chdir(cur_dir)
+    exit(ret_id)
+
 
 if __name__ == "__main__":
+    # check the source directory first
+    src_dir = os.path.expanduser("~/mygithub/shell-vim-cfg/cfg-script")
+    cur_dir = os.getcwd()
+    if not os.path.exists(src_dir):
+        print(f"src dir: {src_dir} not exists!")
+        Exit(1, cur_dir)
+    else:
+        os.chdir(src_dir)
+
+    # no good behavior, patch; TOOD: refine
+    if len(sys.argv) == 2 and sys.argv[1] == "go":
+        os.chdir(src_dir)
+        exit(0)
 
     op_ls = ["s2b", "s2d", "b2s", "b2d", "d2s", "d2b"]
 
@@ -178,19 +195,19 @@ if __name__ == "__main__":
     if len(args) == 1:
         print("usage: python3 parser.py bash .bashrc s2d")
         print(f"Error: args must at least specify the operator , include the: {op_ls}")
-        exit(1)
+        Exit(1, cur_dir)
     elif len(args) >= 2:
         op_type = args[-1].strip()
         if op_type not in op_ls:
             print("usage: python3 parser.py bash .bashrc s2d")
             print(f"Error: args must at least: {op_ls}, instead of the {op_type}")
-            exit(1)
+            Exit(1, cur_dir)
         # here prompt to
         if "2d" in op_type:
             confirm = input("---- Copy to the  destination, you local will be conver. Yes / No ?")
             if not confirm.lower() == "yes":
                 print("---- Cancel you operation! -----")
-                exit(1)
+                Exit(1, cur_dir)
 
         if len(args) == 2:
             # run all the block
@@ -205,13 +222,13 @@ if __name__ == "__main__":
             block_name = args[1].strip()
             if not block_name in block_ls:
                 print("can not found the block, block must be as one of the: {block_ls}")
-                exit(1)
+                Exit(1, cur_dir)
             ret_dict = parser_file(f"{block_name}.hgj")[block_name]
             if len(args) == 4:
                 file_name = args[2].strip()
                 if not file_name in ret_dict.keys():
                     print(f"{file_name} not in the block: {block_name}")
-                    exit(1)
+                    Exit(1, cur_dir)
                 ret_dict = ret_dict[file_name]
                 # operate
                 operate_path(ret_dict, op_type)
@@ -220,7 +237,7 @@ if __name__ == "__main__":
 
         elif len(args) > 4:
             print("usage: python3 parser.py bash .bashrc s2d")
-            exit(1)
+            Exit(1, cur_dir)
 
     #print(ret_dict)
 

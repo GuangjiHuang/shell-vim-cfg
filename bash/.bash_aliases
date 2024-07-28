@@ -115,3 +115,4 @@ alias run='cmake .. && make -j && ./isp-tool-daemon-cmodel'
 # ******************** git hook and unhook ********************
 alias git_hook='git config --global core.hooksPath /opt/jenkins_ci/jenkins_ci/codecheck/hooks'
 alias git_unhook='git config --global core.hooksPath ~'
+

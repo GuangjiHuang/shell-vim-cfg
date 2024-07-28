@@ -3,7 +3,6 @@
 	name = guangji.huang
 [color]
 	ui = auto
-#hooksPath = /opt/jenkins_ci/jenkins_ci/codecheck/hooks
 [core]
 	excludesfile = /data/guangji.huang/.global_gitignore
 	hooksPath = /opt/jenkins_ci/jenkins_ci/codecheck/hooks
@@ -12,3 +11,32 @@
 	conflictstyle = diff3
 [difftool]
 	prompt = false
+[diff]
+	tool = vimdiff
+[alias]
+	# commit 
+	c = commit
+	comit = commit
+	amend = commit --amend
+
+	# status
+	st = status
+	staus = status
+
+	# log
+	l = log
+	lox = log --oneline
+	lo = log --oneline -n5
+	lo5 = log --oneline -n5
+	lo10 = log --oneline -n10
+
+	# diff
+	df = diff
+
+	# show
+
+	# push
+	p = push
+	pm = push origin HEAD:refs/for/master
+	pd = push origin HEAD:refs/for/dev_for_cmodel
+
