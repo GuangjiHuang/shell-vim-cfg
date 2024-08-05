@@ -23,14 +23,14 @@ Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-surround'
 "Plug 'tpope/vim-obsession'
 Plug 'preservim/nerdtree'
-Plug 'ycm-core/YouCompleteMe', {'for': ['c', 'cpp', 'python', 'sh', 'cmake', 'make', 'vim']}
+"Plug 'ycm-core/YouCompleteMe', {'for': ['c', 'cpp', 'python', 'sh', 'cmake', 'make', 'vim']}
 " the local plugin in the local
 Plug '~/.vim/plugged/autocorrect'
 Plug 'preservim/tagbar'
 "Plug 'solyarisoftware/Highlight.vim'
 Plug 'joanrivera/vim-highlight'
 Plug 'rafi/awesome-vim-colorschemes'
-"Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'jeetsukumaran/vim-buffergator'
@@ -86,67 +86,55 @@ autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 "
 " ^---------- Youcompleteme ----------$
-"let g:cm_language_server = {
-"    \ 'bash': {
-"    \     'command': 'bash-language-server',
-"    \     'args': ['start']
-"    \ },
-"    \ 'vim': {
-"    \     'command': 'vim-language-server',
-"    \     'args': ['--stdio']
-"    \ }
-"\}
-"
-"let g:ycm_global_ycm_extra_conf = expand('~/.vim/ycm_extra_conf.py')
-
-let g:ycm_always_populate_location_list = 1
-let g:ycm_auto_hover = "" | "default is the CursorHold
-let g:ycm_error_symbol = 'E'
-let g:ycm_warning_symbol = 'W'
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_echo_current_diagnostic = 'virtual-text'
-"let g:ycm_enable_inlay_hints = 1
-" jumping
-nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
-nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
-nnoremap <leader>j :YcmCompleter GoTo<CR>
-nnoremap <leader>jc :YcmCompleter GoToCallees<CR>
-nnoremap <leader>jdf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jdc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>jdo :YcmCompleter GoToDocumentOutline<CR>
-nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
-nnoremap <leader>jI :YcmCompleter GoToImplementation<CR>
-nnoremap <leader>jr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>js :YcmCompleter GoToSymbol
-nnoremap <leader>jt :YcmCompleter GoToType<CR>
-" diags
-nnoremap <leader>yd :YcmDiags<CR>
-nnoremap <leader>yfi :YcmCompleter FixIt<CR>
+if (0)
+	let g:ycm_always_populate_location_list = 1
+	let g:ycm_auto_hover = "" | "default is the CursorHold
+	let g:ycm_error_symbol = 'E'
+	let g:ycm_warning_symbol = 'W'
+	let g:ycm_enable_diagnostic_highlighting = 0
+	let g:ycm_echo_current_diagnostic = 'virtual-text'
+	"let g:ycm_enable_inlay_hints = 1
+	" jumping
+	nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
+	nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
+	nnoremap <leader>j :YcmCompleter GoTo<CR>
+	nnoremap <leader>jc :YcmCompleter GoToCallees<CR>
+	nnoremap <leader>jdf :YcmCompleter GoToDefinition<CR>
+	nnoremap <leader>jdc :YcmCompleter GoToDeclaration<CR>
+	nnoremap <leader>jdo :YcmCompleter GoToDocumentOutline<CR>
+	nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
+	nnoremap <leader>jI :YcmCompleter GoToImplementation<CR>
+	nnoremap <leader>jr :YcmCompleter GoToReferences<CR>
+	nnoremap <leader>js :YcmCompleter GoToSymbol
+	nnoremap <leader>jt :YcmCompleter GoToType<CR>
+	" diags
+	nnoremap <leader>yd :YcmDiags<CR>
+	nnoremap <leader>yfi :YcmCompleter FixIt<CR>
+endif
 
 "
 " ^---------- tagbar ----------$
 nnoremap <leader>tb :TagbarToggle<CR>
 let g:tagbar_position = 'right'
+" 0: sort by file appearence; 1: sort by name
+let g:tagbar_sort = 0
 "
 " ^---------- vim-highlight ----------$
 let g:lcolor_bg = "black"
 let g:lcolor_fg = "yellow"
 "
 "^---------- ALE ----------$
-if exists("g:loaded_ale_dont_use_this_in_other_plugins_please")
+if (1)
 	let g:ale_enabled = 1
 	let g:ale_hover_cursor = 1
 	let g:ale_completion_enabled = 1
 	"let g:ale_hover_to_floating_preview = 1
 	let g:ale_set_balloons = 1
-	let g:ale_c_cc_executable = 'aarch64-linux-gnu-gcc'
-	let g:ale_c_parse_compile_commands = '~/a2/compile_commands.json'
-	"let g:ale_c_cc_executable = 'gcc'
 	"let g:ale_linters = {'c': ['clangd', 'clangtidy', 'cppcheck', 'cquery']}
 	"let g:ale_linters = {'c': ['clangd', 'clangtidy', 'ccls']}
 	"let g:ale_linters = {'c': ['', ]}
+	let g:ale_virtualtext_cursor = 'disable'
 	let g:ale_linters = {'c': ['clangd']}
-	"let g:ale_c_clangd_options = '-I/usr/include/x86_64-linux-gnu'
 	nnoremap <leader>jd :ALEGoToDefinition<CR>
 	nnoremap <leader>jt :ALEGoToTypeDefinition<CR>
 	nnoremap <leader>ji :ALEGoToImplementation<CR>
@@ -158,8 +146,12 @@ if exists("g:loaded_ale_dont_use_this_in_other_plugins_please")
 	nnoremap <leader>ape :ALEPrevious -error<CR>
 	nnoremap <leader>an :ALENext<CR>
 	nnoremap <leader>ap :ALEPrevious<CR>
-endif
 
+	" re map the completion keybind
+	inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	"inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+endif
 "
 " ^---------- buffergator ----------$
 let g:buffergator_show_full_directory_path = 0

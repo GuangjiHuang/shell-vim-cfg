@@ -218,7 +218,6 @@ nnoremap <leader>% :call FindHeader()<CR>
 "
 " -------------------------------------------%//-------------------------------------------
 " \/
-nnoremap <silent> <leader>/ :let @/ = ""<CR>
 "
 "  ---------------------------------------------------------------
 "  >> <custonm_leader>+x <<
@@ -276,6 +275,7 @@ nnoremap <space>x <C-W>x
 nnoremap <space>H <C-W>H
 nnoremap <space>L <C-W>L
 
+nnoremap <silent> <space>/ :let @/ = ""<CR>
 
 "  ---------------------------------------------------------------
 "  >>  match braces <<
