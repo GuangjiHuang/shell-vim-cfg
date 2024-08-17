@@ -173,6 +173,7 @@ fi
 # use the wls as 
 if [[ $(uname) =~ CYGWIN.* ]] && command -v wsl > /dev/null 2>&1;then
 	exec wsl
+	#exec wsl /usr/bin/bash -l -c "wsl"
 fi
 
 
