@@ -18,6 +18,7 @@ export tx2='root@202.38.214.223'     # ubuntu, wire
 export ws_401='guangji.huang@10.80.40.1'     # ubuntu, wire
 export ws_402='guangji.huang@10.80.40.2'     # ubuntu, wire
 export ws_403='guangji.huang@10.80.40.3'     # ubuntu, wire
+export ws_ai='bitmain@172.28.142.32' # ai server, psw: Suanmain123
 # file
 export gj_f=${hgj_pc_f}
 # ssh
@@ -27,6 +28,7 @@ alias c-tx2='ssh -Y ${tx2}'
 alias c-401='ssh ${ws_401}'
 alias c-402='ssh ${ws_402}'
 alias c-403='ssh ${ws_403}'
+alias c-ai='ssh -t ${ws_ai} "export HGJLOGIN=HGJLOGIN; bash"'
 alias c-server='ssh -Y ${hgj_server}'
 # <<<<<<<<<
 

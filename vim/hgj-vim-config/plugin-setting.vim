@@ -37,6 +37,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive'
 Plug 'gcmt/taboo.vim'
 Plug 'rbong/vim-flog'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 call plug#end()
 "
 " ^---------- easymotion ----------$
@@ -126,15 +128,24 @@ let g:lcolor_fg = "yellow"
 "^---------- ALE ----------$
 if (1)
 	let g:ale_enabled = 1
+	" default is the 10 ms, set to the 1s
+	let g:ale_echo_delay = 1000
 	let g:ale_hover_cursor = 1
 	let g:ale_completion_enabled = 1
 	"let g:ale_hover_to_floating_preview = 1
 	let g:ale_set_balloons = 1
-	"let g:ale_linters = {'c': ['clangd', 'clangtidy', 'cppcheck', 'cquery']}
-	"let g:ale_linters = {'c': ['clangd', 'clangtidy', 'ccls']}
-	"let g:ale_linters = {'c': ['', ]}
+
+	"let g:ale_linters = ['clangd']
+	"
+	let g:ale_linters = {
+				\	"c": ["clangd"],
+				\	"cpp": ["clangd"]
+				\}
 	let g:ale_virtualtext_cursor = 'disable'
-	let g:ale_linters = {'c': ['clangd']}
+	let g:ale_fixers = {
+				\	"c": ["astyle", "clang-format"],
+				\	"*": ["remove_trailing_lines", "trim_whitespace"]
+				\}
 	nnoremap <leader>jd :ALEGoToDefinition<CR>
 	nnoremap <leader>jt :ALEGoToTypeDefinition<CR>
 	nnoremap <leader>ji :ALEGoToImplementation<CR>
@@ -150,6 +161,22 @@ if (1)
 	" re map the completion keybind
 	inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 	"inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+	"
+	nnoremap <leader>js :ALESymbolSearch <C-R><c-W><CR>
+
+	let g:airline#extensions#ale#enabled = 1
+
+	let g:ale_sign_error = 'E'
+	let g:ale_sign_warning = 'W'
+
+	"highlight clear ALEErrorSign
+	"highlight clear ALEWarningSign
+
+	let g:ale_echo_msg_error_str = 'E'
+	let g:ale_echo_msg_warning_str = 'W'
+	let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+	let g:ale_set_highlights = 0
 
 endif
 "
@@ -188,6 +215,34 @@ nnoremap <silent> <Leader>d :call JumpToDebugLine()<CR>
 " ^---------- fugitvie ----------$
 set diffopt+=vertical
 "
+" ^---------- vim-airline ----------$
+"let g:airline_section_a = ''
+"let g:airline_section_b = ''
+let g:airline_section_y = ''
+let g:airline_mode_map = {
+  \ '__'     : '-',
+  \ 'c'      : 'C',
+  \ 'i'      : 'I',
+  \ 'ic'     : 'I',
+  \ 'ix'     : 'I',
+  \ 'n'      : 'N',
+  \ 'multi'  : 'M',
+  \ 'ni'     : 'N',
+  \ 'no'     : 'N',
+  \ 'R'      : 'R',
+  \ 'Rv'     : 'R',
+  \ 's'      : 'S',
+  \ 'S'      : 'S',
+  \ ''     : 'S',
+  \ 't'      : 'T',
+  \ 'v'      : 'V',
+  \ 'V'      : 'V',
+  \ ''     : 'V',
+  \ }
+"
 " ^---------- plugin_name ----------$
+"
+" ^---------- plugin_name ----------$
+"
 " ^---------- plugin_name ----------$
 "

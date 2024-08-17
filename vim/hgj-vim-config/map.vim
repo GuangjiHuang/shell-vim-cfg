@@ -52,6 +52,11 @@ nnoremap <leader>eq :q!<CR>
 nnoremap <leader>ew :w<CR>
 nnoremap <leader>ex :x<CR>
 nnoremap <leader>ee :e!<CR>
+
+inoremap <leader>eq :q!<CR> 
+inoremap <leader>ew <C-O>:w<CR>
+inoremap <leader>ex :x<CR>
+inoremap <leader>ee :e!<CR>
 "nnoremap <leader>e
 "nnoremap <leader>e
 " -------------------------------------------f/F-------------------------------------------
@@ -74,8 +79,9 @@ nnoremap <leader>gw :vimgrep /<C-R>=expand("<cword>")<CR>/gj **/*.h **/*.c **/*.
 nnoremap <leader>hh :Highlight h<CR>
 " cancle the highlight
 nnoremap <leader>hn :Highlight n<CR>
-inoremap hw <esc>ciw
-inoremap hW <esc>ciW
+inoremap hw <C-o>ciw
+inoremap hW <C-o>ciW
+inoremap hh <C-o>s
 " -------------------------------------------i/I-------------------------------------------
 " \i <into the code env>
 nnoremap <leader>ib :call IntoCodeEnv("bash")<CR>
@@ -94,6 +100,9 @@ nnoremap <leader>ll :Limelight!!<cr>
 " \m
 " -------------------------------------------n/N-------------------------------------------
 " \n
+" inser the code note
+nnoremap <leader>N :put =['/*HGJ note:', '    ', '*/']<CR>kA
+
 " -------------------------------------------o/O-------------------------------------------
 " \o
 " -------------------------------------------p/P-------------------------------------------
@@ -137,7 +146,8 @@ nnoremap <leader>sbs :e ~/.bashrc<CR>
 nnoremap <leader>sba :e ~/.bash_aliases<CR>
 " edit the git
 nnoremap <leader>sg :e ~/.gitconfig<CR>
-"
+" highlight the current word.
+"nnoremap <leader>sw :let @/=<C-r>=expand("<cword>")\<CR>\><CR>:match Search /<C-r>=@/<CR>
 " -------------------------------------------t/T-------------------------------------------
 "  \t
 " <tab>
@@ -177,18 +187,21 @@ nnoremap <leader>vt :call Wr("temp", "")<CR>
 nnoremap <leader>vp :call Wr("plan", "")<CR>
 nnoremap <leader>vl :call Wr("learn", "")<CR>
 nnoremap <leader>vc :call Wr("code", "")<CR>
+nnoremap <leader>vt :call Wr("code_task", "")<CR>
 nnoremap <leader>va :call Wr("arragement", "")<CR>
 nnoremap <leader>vr :call Wr("record", "")<CR>
 
 command! -nargs=1 WrQuestion :call Wr("question", <q-args>)
 command! -nargs=1 WrLearn :call Wr("learn", <q-args>)
 command! -nargs=1 WrCode :call Wr("code", <q-args>)
+command! -nargs=1 WrCodetask :call Wr("code_task", <q-args>)
 command! -nargs=1 WrArragement :call Wr("arragement", <q-args>)
 command! -nargs=1 WrRecord :call Wr("record", <q-args>)
 
 nnoremap <leader>vQ :WrQuestion <C-r>=input("")<CR><CR>
 nnoremap <leader>vL :WrLearn <C-r>=input("")<CR><CR>
 nnoremap <leader>vC :WrCode <C-r>=input("")<CR><CR>
+nnoremap <leader>vT :WrCodetask <C-r>=input("")<CR><CR>
 nnoremap <leader>vA :WrArragement <C-r>=input("")<CR><CR>
 nnoremap <leader>vR :WrRecord <C-r>=input("")<CR><CR>
 "nnoremap <leader>vT :call Wr("temp", "")<CR>
@@ -294,4 +307,10 @@ inoremap <c-o> <esc>o
 "  ---------------------------------------------------------------
 set errorformat=%f:%l:%c:%t:%m
 nnoremap <F9> :make<CR>:copen<CR>
+"
+"  ---------------------------------------------------------------
+"  forbid the key
+"  ---------------------------------------------------------------
+"inoremap <BS> <Nop>
+"inoremap <C-h> <C-o>:s
 

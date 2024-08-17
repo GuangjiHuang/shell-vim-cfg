@@ -116,3 +116,6 @@ alias run='cmake .. && make -j && ./isp-tool-daemon-cmodel'
 alias git_hook='git config --global core.hooksPath /opt/jenkins_ci/jenkins_ci/codecheck/hooks'
 alias git_unhook='git config --global core.hooksPath ~'
 
+# ******************** docker ********************
+alias docker_start='docker start hgj'
+alias docker_in='docker exec -it hgj /bin/bash'

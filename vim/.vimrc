@@ -18,7 +18,8 @@ set t_Co=256 " means term Color, reference: https://www.ditig.com/256-colors-che
 set hlsearch
 set incsearch
 "pattern's highlight(hl) color, color reference to: https://www.ditig.com/256-colors-cheat-sheet
-highlight Search ctermbg=155 ctermfg=0
+"highlight Search ctermbg=155 ctermfg=0
+highlight Search ctermbg=119 ctermfg=0
 highlight IncSearch ctermbg=black ctermfg=red
 "highlight MatchParen cterm=underline ctermbg=NONE ctermfg=NONE
 

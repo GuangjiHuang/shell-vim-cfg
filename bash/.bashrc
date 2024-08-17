@@ -170,6 +170,11 @@ if [[ ! $(uname) == "Linux" ]];then
     export DISPLAY=:0.0
 fi
 
+# use the wls as 
+if [[ $(uname) =~ CYGWIN.* ]] && command -v wsl > /dev/null 2>&1;then
+	exec wsl
+fi
+
 
 # add the ~/usr/bin to the PATH
 export PATH=~/bin:${PATH}

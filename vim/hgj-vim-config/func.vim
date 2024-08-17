@@ -5,7 +5,7 @@ func! Exec(command)
     silent exec a:command
     redir END
     return output
-endfunc!
+endfunc
 
 "  -----------------------------------------------------------------------------------------
 " switch the files between the cpp/c and the hpp/h
@@ -305,7 +305,7 @@ output_path = ""
 vim.vars['wr_output_path'] = output_path
 topic = vim.eval('a:topic')
 date = vim.eval('a:date')
-if topic not in ["temp", "plan", "question", "learn", "code", "arragement", "record"]:
+if topic not in ["temp", "plan", "question", "learn", "code", "arragement", "record", "code_task"]:
 	exit
 
 # deal the date
@@ -500,5 +500,17 @@ endfunction
 for c in range(char2nr('a'), char2nr('z'))
   execute 'nnoremap <leader>W' . nr2char(c) . ' :call WriteRegisterToFile("' . nr2char(c) . '")<CR>'
 endfor
+"-----------------------------------------------------------------------------------------
+function! ManPage()
+    let l:word = expand('<cword>')
+    if !empty(l:word)
+        execute 'silent !man ' . l:word
+    endif
+	redraw!
+endfunction
+
+nnoremap <leader>m :call ManPage()<CR>
+"-----------------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------------------
 "-----------------------------------------------------------------------------------------
 "-----------------------------------------------------------------------------------------
