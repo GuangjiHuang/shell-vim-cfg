@@ -1,0 +1,109 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.008  000.008: --- VIM STARTING ---
+000.097  000.089: Allocated generic buffers
+000.164  000.067: locale set
+000.167  000.003: clipboard setup
+000.170  000.003: window checked
+001.374  001.204: inits 1
+001.412  000.038: parsing arguments
+001.413  000.001: expanding arguments
+001.428  000.015: shell init
+002.050  000.622: Termcap init
+002.068  000.018: inits 2
+002.228  000.160: init highlight
+006.656  001.045  001.045: sourcing /usr/share/vim/vim82/syntax/syncolor.vim
+007.068  002.200  001.155: sourcing /usr/share/vim/vim82/syntax/synload.vim
+014.328  006.531  006.531: sourcing /usr/share/vim/vim82/filetype.vim
+014.578  010.485  001.754: sourcing /usr/share/vim/vim82/syntax/syntax.vim
+015.733  000.300  000.300: sourcing /usr/share/vim/vim82/syntax/nosyntax.vim
+017.602  000.216  000.216: sourcing /usr/share/vim/vim82/syntax/syncolor.vim
+018.018  001.409  001.193: sourcing /usr/share/vim/vim82/syntax/synload.vim
+018.067  003.076  001.367: sourcing /usr/share/vim/vim82/syntax/syntax.vim
+018.798  000.043  000.043: sourcing /usr/share/vim/vim82/filetype.vim
+020.521  000.164  000.164: sourcing /usr/share/vim/vim82/ftplugin.vim
+021.371  018.728  004.960: sourcing /etc/vimrc
+023.955  000.299  000.299: sourcing /usr/share/vim/vim82/syntax/syncolor.vim
+027.842  001.698  001.698: sourcing /usr/share/vim/vim82/ftoff.vim
+029.791  000.305  000.305: sourcing /home/hgj/.vim/bundle/Vundle.vim/autoload/vundle.vim
+031.176  000.226  000.226: sourcing /home/hgj/.vim/bundle/Vundle.vim/autoload/vundle/config.vim
+041.454  000.060  000.060: sourcing /home/hgj/.vim/bundle/vim-fugitive/ftdetect/fugitive.vim
+043.406  008.936  008.876: sourcing /usr/share/vim/vim82/filetype.vim
+046.091  000.035  000.035: sourcing /usr/share/vim/vim82/ftplugin.vim
+049.826  000.117  000.117: sourcing /usr/share/vim/vim82/indent.vim
+052.596  000.054  000.054: sourcing /home/hgj/.vim/own_func/my_own_function.vim
+052.613  030.592  018.922: sourcing $HOME/.vimrc
+052.622  001.074: sourcing vimrc file(s)
+073.384  002.265  002.265: sourcing /home/hgj/.vim/bundle/vim-fugitive/plugin/fugitive.vim
+078.261  000.084  000.084: sourcing /home/hgj/.vim/bundle/command-t/autoload/commandt/mirkwood.vim
+078.474  004.101  004.017: sourcing /home/hgj/.vim/bundle/command-t/plugin/command-t.vim
+082.670  000.129  000.129: sourcing /usr/share/vim/vim82/plugin/getscriptPlugin.vim
+084.071  000.611  000.611: sourcing /usr/share/vim/vim82/plugin/gzip.vim
+085.152  000.353  000.353: sourcing /usr/share/vim/vim82/plugin/logiPat.vim
+085.684  000.079  000.079: sourcing /usr/share/vim/vim82/plugin/manpager.vim
+086.370  000.250  000.250: sourcing /usr/share/vim/vim82/plugin/matchparen.vim
+087.551  000.705  000.705: sourcing /usr/share/vim/vim82/plugin/netrwPlugin.vim
+088.115  000.061  000.061: sourcing /usr/share/vim/vim82/plugin/rrhelper.vim
+088.586  000.063  000.063: sourcing /usr/share/vim/vim82/plugin/spellfile.vim
+089.410  000.333  000.333: sourcing /usr/share/vim/vim82/plugin/tarPlugin.vim
+090.224  000.252  000.252: sourcing /usr/share/vim/vim82/plugin/tohtml.vim
+091.340  000.511  000.511: sourcing /usr/share/vim/vim82/plugin/vimballPlugin.vim
+092.331  000.335  000.335: sourcing /usr/share/vim/vim82/plugin/zipPlugin.vim
+092.539  029.869: loading plugins
+104.462  007.150  007.150: sourcing /home/hgj/.vim/pack/others/start/easymotion/plugin/EasyMotion.vim
+106.096  000.100  000.100: sourcing /home/hgj/.vim/pack/others/start/goyo.vim/plugin/goyo.vim
+107.571  000.093  000.093: sourcing /home/hgj/.vim/pack/others/start/limelight.vim/plugin/limelight.vim
+109.231  000.273  000.273: sourcing /home/hgj/.vim/pack/others/start/markdown-preview.vim/plugin/mkdp.vim
+111.586  000.918  000.918: sourcing /home/hgj/.vim/pack/others/start/mathjax-support-for-mkdp/plugin/mathjax.vim
+116.833  000.822  000.822: sourcing /home/hgj/.vim/pack/others/start/nerdtree/autoload/nerdtree.vim
+120.271  000.636  000.636: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/path.vim
+123.244  000.203  000.203: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/menu_controller.vim
+125.923  000.142  000.142: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/menu_item.vim
+129.657  000.195  000.195: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/key_map.vim
+133.015  000.401  000.401: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/bookmark.vim
+135.964  000.271  000.271: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/tree_file_node.vim
+141.310  000.849  000.849: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/tree_dir_node.vim
+144.330  000.273  000.273: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/opener.vim
+147.394  000.338  000.338: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/creator.vim
+150.110  000.087  000.087: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/flag_set.vim
+152.806  000.181  000.181: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/nerdtree.vim
+156.431  000.568  000.568: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/ui.vim
+159.809  000.099  000.099: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/event.vim
+162.563  000.113  000.113: sourcing /home/hgj/.vim/pack/others/start/nerdtree/lib/nerdtree/notifier.vim
+167.109  000.575  000.575: sourcing /home/hgj/.vim/pack/others/start/nerdtree/autoload/nerdtree/ui_glue.vim
+175.102  000.255  000.255: sourcing /home/hgj/.vim/pack/others/start/nerdtree/nerdtree_plugin/exec_menuitem.vim
+183.412  007.578  007.578: sourcing /home/hgj/.vim/pack/others/start/nerdtree/nerdtree_plugin/fs_menu.vim
+183.977  000.108  000.108: sourcing /home/hgj/.vim/pack/others/start/nerdtree/nerdtree_plugin/vcs.vim
+188.910  076.021  062.327: sourcing /home/hgj/.vim/pack/others/start/nerdtree/plugin/NERD_tree.vim
+191.215  000.164  000.164: sourcing /home/hgj/.vim/pack/others/start/python-vim-instant-markdown/plugin/md_instant.vim
+193.321  000.626  000.626: sourcing /home/hgj/.vim/pack/others/start/taglist.vim/plugin/taglist.vim
+195.206  000.447  000.447: sourcing /home/hgj/.vim/pack/others/start/unicode/plugin/unicode.vim
+195.973  000.048  000.048: sourcing /home/hgj/.vim/pack/others/start/unicode/ftdetect/unicode.vim
+197.698  000.544  000.544: sourcing /home/hgj/.vim/pack/others/start/vim-exchange/plugin/exchange.vim
+385.310  186.254  186.254: sourcing /home/hgj/.vim/pack/others/start/vim-latex-live-preview/plugin/latexlivepreview.vim
+387.709  000.299  000.299: sourcing /home/hgj/.vim/pack/others/start/vim-numbertoggle/plugin/number_toggle.vim
+390.433  001.152  001.152: sourcing /home/hgj/.vim/pack/others/start/vim-table-mode/plugin/table-mode.vim
+392.071  000.150  000.150: sourcing /home/hgj/.vim/pack/syntax/start/easy-rich-text/plugin/rich.vim
+395.447  002.035  002.035: sourcing /home/hgj/.vim/pack/syntax/start/txtfmt/plugin/txtfmt.vim
+397.498  000.658  000.658: sourcing /home/hgj/.vim/pack/tpope/start/surround/plugin/surround.vim
+407.991  009.115  009.115: sourcing /home/hgj/.vim/pack/tpope/start/unimpaired/plugin/unimpaired.vim
+411.273  000.375  000.375: sourcing /home/hgj/.vim/pack/tpope/start/vim-obsession/plugin/obsession.vim
+415.429  002.757  002.757: sourcing /home/hgj/.vim/pack/vim-plugin-manger/start/vim-plug/plugin/plug.vim
+416.151  034.433: loading packages
+418.523  002.372: loading after plugins
+418.535  000.012: inits 3
+419.145  000.610: reading viminfo
+419.158  000.013: setting raw mode
+419.162  000.004: start termcap
+419.176  000.014: clearing screen
+444.557  025.381: opening buffers
+444.699  000.142: BufEnter autocommands
+444.704  000.005: editing files in windows
+544.396  099.692: VimEnter autocommands
+544.403  000.007: before starting main loop
+544.603  000.200: first screen update
+544.605  000.002: --- VIM STARTED ---
