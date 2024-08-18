@@ -17,8 +17,14 @@ bd_prefix : ~/opt/shell-vim-cfg-bd/vim
 	dst: ${dst_prefix}/.vim/${file}
 	bd: ${bd_prefix}/${file}
 
-2) ycm_extra_conf.py
+3) ycm_extra_conf.py
 	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/.vim/${file}
+	bd: ${bd_prefix}/${file}
+
+4) autoload
+	type: d
 	src: ${src_prefix}/${file}
 	dst: ${dst_prefix}/.vim/${file}
 	bd: ${bd_prefix}/${file}
