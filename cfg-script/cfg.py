@@ -204,7 +204,7 @@ if __name__ == "__main__":
             Exit(1, cur_dir)
         # here prompt to
         if "2d" in op_type:
-            confirm = input("---- Copy to the  destination, you local will be conver. Yes / No ?")
+            confirm = input("---- Copy to the  destination, you local will be conver. Yes / No: ")
             if not confirm.lower() == "yes":
                 print("---- Cancel you operation! -----")
                 Exit(1, cur_dir)
