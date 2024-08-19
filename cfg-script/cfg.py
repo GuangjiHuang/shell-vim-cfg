@@ -182,7 +182,8 @@ if __name__ == "__main__":
                     "tmux.hgj",
                     "git.hgj",
                     "input.hgj",
-                    "gdb.hgj"
+                    "gdb.hgj",
+                    "hyper.hgj"
                     ]
 
     block_ls = []
