@@ -200,7 +200,7 @@ if [ -f $z_sh_path ]; then
 fi
 
 # mygithub script
-local mygithub_repo_path=~/mygithub/repo/clone_repo.sh
+mygithub_repo_path=~/mygithub/repo/clone_repo.sh
 if [ -f $mygithub_repo_path ]; then
 	. $mygithub_repo_path
 fi
