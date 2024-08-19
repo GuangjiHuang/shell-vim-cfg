@@ -198,3 +198,9 @@ fi
 if [ -f $z_sh_path ]; then
 	. $z_sh_path
 fi
+
+# mygithub script
+local mygithub_repo_path=~/mygithub/repo/clone_repo.sh
+if [ -f $mygithub_repo_path ]; then
+	. $mygithub_repo_path
+fi

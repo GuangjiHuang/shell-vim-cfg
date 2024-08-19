@@ -119,3 +119,8 @@ alias git_unhook='git config --global core.hooksPath ~'
 # ******************** docker ********************
 alias docker_start='docker start hgj'
 alias docker_in='docker exec -it hgj /bin/bash'
+
+# ******************** docker ********************
+alias wsl20='wsl -d Ubuntu-20.04'
+alias wsl22='wsl -d Ubuntu-22.04'
+alias wsldb='wsl -d Debian'
