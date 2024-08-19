@@ -3,7 +3,7 @@ src_prefix : ~/mygithub/shell-vim-cfg/hyper
 dst_prefix : ~
 bd_prefix : ~/opt/shell-vim-cfg-bd/hyper
 
-[git]
+[hyper]
 
 1) .hyper.js
 	type: f
