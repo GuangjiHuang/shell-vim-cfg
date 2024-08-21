@@ -116,7 +116,7 @@ fi
 ############################## echo the promote(that has the color) ####################
 #export PS1="\e[0;31m[\u@\h \w]\\$ \e[m"
 #clear
-echo -e "${BLUE}==========${NOCOLOR} ${RED}Welcome root${NOCOLOR} ${BLUE}==============${NOCOLOR}"
+echo -e "${BLUE}==========${NOCOLOR} ${RED}Welcome $(whoami), have a nice day!${NOCOLOR} ${BLUE}==============${NOCOLOR}"
 set -o vi
 ############## change the inline shell(the option in the set and the shopt)####################
 # turn on this option let you can use the ** to match any directories or the subdirectoies or the files, and the **/ (adding the backslash, that matching any directories or the subdirectories)
