@@ -1,0 +1,13 @@
+[var]
+src_prefix : ~/mygithub/shell-vim-cfg/hyper
+dst_prefix : ~
+bd_prefix : ~/opt/shell-vim-cfg-bd/hyper
+
+[hyper]
+
+1) .hyper.js
+	type: f
+	src: ${src_prefix}/${file}
+	dst: ${dst_prefix}/${file}
+	bd: ${bd_prefix}/${file}
+
