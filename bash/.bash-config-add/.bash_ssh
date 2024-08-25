@@ -41,5 +41,19 @@ done
 
 # the setting ip: 192.168.1.9
 export evb_ip='192.168.1.9'
+alias c-devb="ssh-keygen -f $HOME/.ssh/known_hosts -R 192.168.1.9;ssh root@${evb_ip}"
 alias c-evb="sshpass -p 'cvitek' ssh root@${evb_ip}"
 alias c-evb-e="sshpass -p 'linaro' ssh linaro@&{evb_ip}"
+
+# not work
+#c_19216819()
+#{
+#	ssh-keygen -f $HOME/.ssh/known_hosts -R 192.168.1.9
+#	set timeout 10
+#	spawn ssh root@192.168.1.9
+#	expect "? "
+#	send "yes\r"
+#	expect "password:"
+#	send "cvitek"
+#	interact
+#}
