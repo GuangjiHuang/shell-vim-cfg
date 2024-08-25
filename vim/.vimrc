@@ -112,6 +112,8 @@ let &path = &path . "," . expand($HOME) . "/v4l2/middleware/v1/modules/isp/cv186
 " set the tags
 set tags=~/v4l2/middleware/v1/modules/isp/tags
 
+autocmd BufWritePre *.txt set autowrite
+
 " highlight the tabline
 highlight TabLineSel ctermfg=red
 highlight TabLine ctermfg=yellow cterm=NONE

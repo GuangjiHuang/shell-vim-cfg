@@ -62,7 +62,7 @@ EOF
 
 gitinit() (
   cd "$PLUG_FIXTURES/$1"
-  git init -b master
+  git init
   git commit -m 'commit' --allow-empty
 )
 
@@ -98,7 +98,7 @@ DOC
 
   rm -rf $TEMP/new-branch
   cd $TEMP
-  git init new-branch -b master
+  git init new-branch
   cd new-branch
   mkdir plugin
   echo 'let g:foo = 1' > plugin/foo.vim

@@ -139,12 +139,14 @@ if (1)
 	"
 	let g:ale_linters = {
 				\	"c": ["clangd"],
-				\	"cpp": ["clangd"]
+				\	"sh": [],
+				\	"cpp": ["clangd"],
 				\}
 	let g:ale_virtualtext_cursor = 'disable'
 	let g:ale_fixers = {
 				\	"c": ["astyle", "clang-format"],
-				\	"*": ["remove_trailing_lines", "trim_whitespace"]
+				\	"sh": [],
+				\	"*": ["remove_trailing_lines", "trim_whitespace"],
 				\}
 	nnoremap <leader>jd :ALEGoToDefinition<CR>
 	nnoremap <leader>jt :ALEGoToTypeDefinition<CR>
