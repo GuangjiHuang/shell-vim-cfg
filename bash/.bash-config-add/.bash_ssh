@@ -29,13 +29,13 @@ alias c-ai='ssh -t ${ws_ai} "export HGJLOGIN=HGJLOGIN; bash"'
 # -----------------------------------------------------------------------------------------
 #  the router:
 export router_ip='172.25.5.12'
-export device_router_ip="root@${router_ip}"
-export edge_router_ip="linaro@${router_ip}"
+export device="root@${router_ip}"
+export edge="linaro@${router_ip}"
 
 let i=0
 while [ $i -le "8" ]; do
-	alias "d-10${i}"="sshpass -p 'cvitek' ssh ${device_router_ip} -p 2${i}"
-	alias "e-10${i}"="sshpass -p 'linaro' ssh ${edge_router_ip} -p 2${i}"
+	alias "d-10${i}"="sshpass -p 'cvitek' ssh ${device} -p 2${i}"
+	alias "e-10${i}"="sshpass -p 'linaro' ssh ${edge} -p 2${i}"
 	let i+=1
 done
 

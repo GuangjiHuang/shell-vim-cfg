@@ -108,7 +108,7 @@ au VimEnter * silent execute '!echo -ne "\e[2 q\e]12;red\a\2"' | redraw!
 "
 " set the path
 " let &path = &path . "," . expand($HOME) . "/**"
-let &path = &path . "," . expand($HOME) . "/v4l2/middleware/v1/modules/isp/cv186x/**"
+"let &path = &path . "," . expand($HOME) . "/v4l2/middleware/v1/modules/isp/cv186x/**"
 " set the tags
 set tags=~/v4l2/middleware/v1/modules/isp/tags
 
@@ -125,7 +125,15 @@ source ~/.vim/hgj-vim-config/map.vim
 source ~/.vim/hgj-vim-config/plugin-setting.vim " plugin settigns
 source ~/.vim/hgj-vim-config/spelling-corect.vim "corect the spelling mistakes
 
+"source ~/.vim/hgj-vim-config/plugin/bookmark.vim
+"source ~/.vim/hgj-vim-config/plugin/pathfinder.vim
+
 if &diff
 	source ~/.vim/hgj-vim-config/vimdiffrc.vim
 endif
 
+colorscheme OceanicNext
+
+highlight LineNr ctermbg=0 ctermfg=102 cterm=NONE guibg=#000000 guifg=#101010 gui=NONE
+highlight CursorLineNr ctermbg=0 ctermfg=red cterm=NONE
+highlight CursorLine ctermbg=91 ctermfg=NONE  cterm=NONE

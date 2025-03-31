@@ -39,6 +39,7 @@ Plug 'gcmt/taboo.vim'
 Plug 'rbong/vim-flog'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'kawre/leetcode.nvim'
 call plug#end()
 "
 " ^---------- easymotion ----------$
@@ -137,15 +138,18 @@ if (1)
 
 	"let g:ale_linters = ['clangd']
 	"
+	let $PYTHONPATH = expand('~') . '/isp/mars3/isp-tool-daemon-cmodel/cmodel'
 	let g:ale_linters = {
-				\	"c": ["clangd"],
-				\	"sh": [],
+				\	"c": ["ccls", "clangd", "cppcheck", "cquery"],
 				\	"cpp": ["clangd"],
+				\	"sh": ["shellcheck"],
+				\	"make": ["makecheck"],
+				\	"python": ["jedils", "pylsp"],
 				\}
 	let g:ale_virtualtext_cursor = 'disable'
 	let g:ale_fixers = {
 				\	"c": ["astyle", "clang-format"],
-				\	"sh": [],
+				\	"python": ["autopep8"],
 				\	"*": ["remove_trailing_lines", "trim_whitespace"],
 				\}
 	nnoremap <leader>jd :ALEGoToDefinition<CR>

@@ -79,9 +79,9 @@ nnoremap <leader>gw :vimgrep /<C-R>=expand("<cword>")<CR>/gj **/*.h **/*.c **/*.
 nnoremap <leader>hh :Highlight h<CR>
 " cancle the highlight
 nnoremap <leader>hn :Highlight n<CR>
-inoremap hw <C-o>ciw
-inoremap hW <C-o>ciW
-inoremap hh <C-o>s
+"inoremap hw <C-o>ciw
+"inoremap hW <C-o>ciW
+"inoremap hh <C-o>s
 " -------------------------------------------i/I-------------------------------------------
 " \i <into the code env>
 nnoremap <leader>ib :call IntoCodeEnv("bash")<CR>

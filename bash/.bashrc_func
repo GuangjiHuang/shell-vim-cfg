@@ -17,6 +17,12 @@ mygrep() {
 	fi
 }
 
+vgrep() {
+	if [ -n "$1" ]; then
+		grep -rIn "$1" . > tmp.txt; vim tmp.txt
+	fi
+}
+
 repo_sync()
 {
 	repo sync -d && \
@@ -97,20 +103,25 @@ bear_make()
 	CCJ="compile_commands.json"
 	OCC="aarch64-linux-gnu-gcc"
 	OCXX="aarch64-linux-gnu-g++"
+	OOCC="aarch64-linux-gcc"
+	OOCXX="aarch64-linux-g++"
 	#LCC="gcc"
 	#LCXX="g++"
 	LCC="clang"
 	LCXX="clang"
 
 	if [ -f $CCJ ]; then
-		bear -a make $@
+		#bear -a make $@
+		bear make $@ -j
 	else
-		bear make $@
+		bear make $@ -j
 	fi
 
 	ret_val=$?
 	sed -i "s/${OCC}/${LCC}/g" ${CCJ}
 	sed -i "s/${OCXX}/${LCXX}/g" ${CCJ}
+	sed -i "s/${OOCC}/${LCC}/g" ${CCJ}
+	sed -i "s/${OOCXX}/${LCXX}/g" ${CCJ}
 	return $ret_val
 }
 
@@ -251,22 +262,68 @@ make_compile_json()
 	python3 ~/.bash_func/merge_json_file.py $TOP_DIR {$ISP_PATH,$ISP_D_PATH,$MW_BIN_PATH,$MW_VI_PATH,$MW_VPSS_PATH,$MW_SYS_PATH,$RTSP_PATH}/compile_commands.json
 }
 
-source_edge()
+source_edge_master()
 {
 	pushd $PWD
-	cd ~/v4l2
+	cd ~/edge/master
 	source build/envsetup_soc.sh
-	defconfig bm1688_wevb_emmc
+	defconfig edge_wevb_emmc
 	popd
 }
 
-source_a2()
+source_edge_release()
 {
 	pushd $PWD
-	cd ~/a2
+	cd ~/edge/release
 	source build/envsetup_soc.sh
-	defconfig cv186ah_wevb_emmc
+	defconfig edge_wevb_emmc
 	popd
+}
+
+source_a2_master()
+{
+	pushd $PWD
+	cd ~/a2/master
+	source build/envsetup_soc.sh
+	defconfig device_wevb_emmc
+	popd
+}
+
+source_a2_release()
+{
+	pushd $PWD
+	cd ~/a2/release
+	source build/envsetup_soc.sh
+	defconfig device_wevb_emmc
+	popd
+}
+
+source_mars3()
+{
+	pushd $PWD
+	cd ~/mars3_dev
+	source build/envsetup_soc.sh
+	defconfig cv184x_fpga
+	popd
+}
+
+source_mars31()
+{
+	pushd $PWD
+	cd ~/mars3_dev1
+	source build/envsetup_soc.sh
+	defconfig cv184x_fpga
+	popd
+}
+
+vim_mars3_def()
+{
+	vim ~/mars3_dev/build/boards/cv184x/cv184x_fpga/cv184x_fpga_defconfig
+}
+
+vim_mars31_def()
+{
+	vim ~/mars3_dev1/build/boards/cv184x/cv184x_fpga/cv184x_fpga_defconfig
 }
 
 

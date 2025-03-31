@@ -22,3 +22,5 @@ mars3*.tar
 cvi_pqtool_json.h
 
 .clangd
+
+.ccls-cache

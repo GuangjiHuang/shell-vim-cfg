@@ -107,8 +107,11 @@ alias base='conda activate base'
 alias hgj='ps -ef | grep hgj'
 alias stop='pgrep -f "sys-detect" | xargs sudo kill -9; pgrep -f "hgj" | xargs sudo kill -9'
 alias start='. /opt/startup/hgj_startup.sh'
-alias git_check='git show | ~/cvitek/linux_5.10/scripts/checkpatch.pl --no-signoff -q --max-line-length=120 --no-tree -ignore BAD_SIGN_OFF,GERRIT_CHANGE_ID,FILE_PATH_CHANGES,REDUNDANT_CODE,GCC_BINARY_CONSTANT,GIT_COMMIT_ID,BRACES,SPDX_LICENSE_TAG,TYPO_SPELLING,MISSING_EOF_NEWLINE,LINUX_VERSION_CODE,NOT_UNIFIED_DIFF,NEW_TYPEDEFS,DEPRECATED_VARIABLE,EXECUTE_PERMISSIONS'
+alias git_check='git show | ~/mars3/linux_5.10/scripts/checkpatch.pl --no-signoff -q --max-line-length=120 --no-tree -ignore BAD_SIGN_OFF,GERRIT_CHANGE_ID,FILE_PATH_CHANGES,REDUNDANT_CODE,GCC_BINARY_CONSTANT,GIT_COMMIT_ID,BRACES,SPDX_LICENSE_TAG,TYPO_SPELLING,MISSING_EOF_NEWLINE,LINUX_VERSION_CODE,NOT_UNIFIED_DIFF,NEW_TYPEDEFS,DEPRECATED_VARIABLE,EXECUTE_PERMISSIONS'
 
+alias src_check='~/mars3/linux_5.10/scripts/checkpatch.pl --no-signoff -q --max-line-length=120 --no-tree -ignore BAD_SIGN_OFF,GERRIT_CHANGE_ID,FILE_PATH_CHANGES,REDUNDANT_CODE,GCC_BINARY_CONSTANT,GIT_COMMIT_ID,BRACES,SPDX_LICENSE_TAG,TYPO_SPELLING,MISSING_EOF_NEWLINE,LINUX_VERSION_CODE,NOT_UNIFIED_DIFF,NEW_TYPEDEFS,DEPRECATED_VARIABLE,EXECUTE_PERMISSIONS'
+
+alias mars3_check='~/mars3/linux_5.10/scripts/checkpatch.pl --no-signoff -q --max-line-length=120 --no-tree -ignore BAD_SIGN_OFF,GERRIT_CHANGE_ID,FILE_PATH_CHANGES,REDUNDANT_CODE,GCC_BINARY_CONSTANT,GIT_COMMIT_ID,BRACES,SPDX_LICENSE_TAG,TYPO_SPELLING,MISSING_EOF_NEWLINE,LINUX_VERSION_CODE,NOT_UNIFIED_DIFF,NEW_TYPEDEFS,DEPRECATED_VARIABLE'
 # ******************** run the cmodel ********************
 alias run='cmake .. && make -j && ./isp-tool-daemon-cmodel'
 
@@ -124,3 +127,18 @@ alias docker_in='docker exec -it hgj /bin/bash'
 alias wsl20='wsl -d Ubuntu-20.04'
 alias wsl22='wsl -d Ubuntu-22.04'
 alias wsldb='wsl -d Debian'
+
+# ******************** make ********************
+if type bear >/dev/null 2>&1; then
+	alias  make='bear make'
+fi
+
+alias make_t='make -j >tmp.txt 2>&1; echo "${PWD}/tmp.txt" > ~/.vim/tmp.txt'
+alias make_tv='make -j >tmp.txt 2>&1; vim tmp.txt'
+
+
+alias kill_cpptool="ps -ef | grep 'cpptools' | grep -v 'grep' | awk '{print \$2}' | xargs sudo kill -9"
+alias show_cpptool="ps -ef | grep 'cpptools' | grep -v 'grep'"
+
+alias enalbe_raw_replay="export CV184X_FPGA_RAW_REPLAY=1"
+alias disable_raw_replay="unset CV184X_FPGA_RAW_REPLAY"

@@ -5,7 +5,8 @@
 	ui = auto
 [core]
 	excludesfile = /data/guangji.huang/.global_gitignore
-	hooksPath = /opt/jenkins_ci/jenkins_ci/codecheck/hooks
+	hooksPath = /data/guangji.huang
+	#hooksPath = /opt/jenkins_ci/jenkins_ci/codecheck/hooks
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
@@ -39,6 +40,8 @@
 	p = push
 	pm = push origin HEAD:refs/for/master
 	pd = push origin HEAD:refs/for/dev_for_cmodel
+	pmars3 = push origin HEAD:refs/for/Mars3_dev
+	pmars3c = push origin HEAD:refs/for/Mars3_dev_C906L
 
 [commit]
 	cleanup = scissors
