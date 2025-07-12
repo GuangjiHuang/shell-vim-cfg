@@ -57,6 +57,7 @@ set tabstop=4  " key one time tab, indent 4 space
 set softtabstop=4 " vim see the continues space as the tab character
 set shiftwidth=4 " if auto indent, will indent 4 space
 set backspace=2 " function?
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 " encoding 
 set fencs=utf-8,big5,gb18030,utf-16 "fileencodings

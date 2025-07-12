@@ -110,6 +110,7 @@ nnoremap <leader>N :put =['/*HGJ note:', '    ', '*/']<CR>kA
 " -------------------------------------------q/Q-------------------------------------------
 " \q
 nnoremap <leader>qq :q!<CR>
+nnoremap <leader>qa :qall!<CR>
 "<quickfix> operation
 nnoremap <leader>qo :copen<CR>
 nnoremap <leader>qc :cclose<CR>
@@ -183,7 +184,7 @@ nnoremap <leader>tf :NERDTreeFind \| normal zz<CR>
 " \v <vim>
 "nnoremap <leader>vt :exec strftime("e ~/mygithub/everyday-record/%Y-%m/%m-%d/temp.txt", localtime())<CR>
 nnoremap <leader>vq :call Wr("question", "")<CR>
-nnoremap <leader>vt :call Wr("temp", "")<CR>
+nnoremap <leader>ve :call Wr("temp", "")<CR>
 nnoremap <leader>vp :call Wr("plan", "")<CR>
 nnoremap <leader>vl :call Wr("learn", "")<CR>
 nnoremap <leader>vc :call Wr("code", "")<CR>

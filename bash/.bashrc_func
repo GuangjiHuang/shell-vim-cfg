@@ -11,7 +11,7 @@ myfind() {
 mygrep() {
 	if [ -n "$1" ]; then
 		#grep -r "$2" "$1" . # for example: mygrep "xxxx" -l
-		grep -rIn "$1" .
+		grep -rIn "$1" . --exclude-dir=".ccls-cache"
 	else
 		echo "Error: should input grep what?"
 	fi
@@ -19,13 +19,13 @@ mygrep() {
 
 vgrep() {
 	if [ -n "$1" ]; then
-		grep -rIn "$1" . > tmp.txt; vim tmp.txt
+		grep -rIn "$1" . --exclude-dir=".ccls-cache" > tmp.txt; vim tmp.txt
 	fi
 }
 
 repo_sync()
 {
-	repo sync -d && \
+	repo sync --force-sync && \
 	repo forall -c 'git reset --hard'
 	repo forall -c 'git clean -f -d'
 }
@@ -298,6 +298,45 @@ source_a2_release()
 	popd
 }
 
+source_m()
+{
+	if [ ! $# -eq 2 ]; then
+		echo "Usage: source_m mars3_dev dual_os/linux_os"
+		echo "exit ..."
+		return 1
+	fi
+	local mars3_dir=$1
+	local dual_os=$2
+
+	if [ ! -d ~/$1 ]; then
+		echo "~/$1 not exist!"
+		return
+	fi
+
+	if [ "$2" != "dual_os" -a "$2" != "linux_os" ]; then
+		echo "$2 not right, must be the dual_os or linux_os"
+		return
+	fi
+
+	#pushd $PWD
+
+	cd ~/$1
+	source build/envsetup_soc.sh
+	defconfig cv184x_fpga
+
+	if [ "$2" == "dual_os" ]; then
+		setconfig DUAL_OS=y
+		setconfig ENABLE_ALIOS=y
+	fi
+
+	if [ "$2" == "linux_os" ]; then
+		setconfig DUAL_OS=n
+		setconfig ENABLE_ALIOS=n
+		setconfig ION_SIZE=0x6000000
+	fi
+	#popd
+}
+
 source_mars3()
 {
 	pushd $PWD
@@ -414,3 +453,39 @@ make_compile_json_edge()
 
 }	
 
+#mars3_json2ini()
+#{
+#	local mars3_json_2_ini_path=~/opt/isp_team_tool/json2ini
+#	local dump_json_path="$1"
+#	local cmodel_template_path="$2"
+#	local usage_promote_ls=(
+#		"(1) Usage:\n"
+#		"\tmars3_json2ini dump_json_path/dir [cmodel_template_ini]\n"
+#		"(2) args:\n"
+#		"\tdump_json_path/dir: required, the dump json path or the directory\n"
+#		"\tcmodel_template_ini: optional, the cmodel template ini. If not specified, will use the default cmodel template ini!\n"
+#	)
+#
+#	local usage_promote_str=$(printf "%s" "${usage_promote_ls[@]}")
+#
+#	if [ -z $dump_json_path ]; then
+#		echo "You must input the dump json path/dir!"
+#		echo -e $usage_promote_str
+#		return 1
+#	fi
+#
+#	if [ -d $mars3_json_2_ini_path ]; then
+#		pushd $mars3_json_2_ini_path
+#		if [ -z "$cmodel_template_path" ]; then
+#			python3 main.py "--dump_json" "$dump_json_path"
+#		else
+#			python3 main.py "--dump_json" "$dump_json_path" "--cmodel_template" "$cmodel_template_ini"
+#		fi
+#		popd
+#	else
+#		echo "$mars3_json_2_ini_path not exist! Exit..."
+#		return 1
+#	fi
+#
+#}
+#

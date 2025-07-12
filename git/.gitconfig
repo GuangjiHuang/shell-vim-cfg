@@ -42,6 +42,7 @@
 	pd = push origin HEAD:refs/for/dev_for_cmodel
 	pmars3 = push origin HEAD:refs/for/Mars3_dev
 	pmars3c = push origin HEAD:refs/for/Mars3_dev_C906L
+	pmars3i = push origin HEAD:refs/for/mars3
 
 [commit]
 	cleanup = scissors

@@ -511,6 +511,49 @@ endfunction
 
 nnoremap <leader>m :call ManPage()<CR>
 "-----------------------------------------------------------------------------------------
-"-----------------------------------------------------------------------------------------
+" 使用<leader><esc> 作为 Esc 键开关
+"let g:esc_disabled = 0
+"
+""function! ToggleEsc()
+""  if g:esc_disabled == 0
+""    " 禁用 Esc 键
+""    nnoremap <Esc> <Nop>
+""    inoremap <Esc> <Nop>
+""    vnoremap <Esc> <Nop>
+""    let g:esc_disabled = 1
+""    echo "Esc 键已禁用"
+""  else
+""    " 启用 Esc 键
+""    nunmap <Esc>
+""    iunmap <Esc>
+""    vunmap <Esc>
+""    let g:esc_disabled = 0
+""    echo "Esc 键已启用"
+""  endif
+""endfunction
+""
+""" 映射 <leader><esc> 到开关函数
+""nnoremap <leader><esc> :call ToggleEsc()<CR>
+""inoremap <leader><esc> <Esc>:call ToggleEsc()<CR>
+""vnoremap <leader><esc> <Esc>:call ToggleEsc()<CR>
+""-----------------------------------------------------------------------------------------
+"" 使用 <leader>p 切换 paste 模式
+let g:paste_mode = 0
+
+function! TogglePaste()
+  if g:paste_mode == 0
+    set paste
+    let g:paste_mode = 1
+    echo "Paste 模式已启用 (自动缩进关闭)"
+  else
+    set nopaste
+    let g:paste_mode = 0
+    echo "Paste 模式已禁用 (自动缩进恢复)"
+  endif
+endfunction
+
+" 映射 <leader>p 到切换函数
+nnoremap <leader>p :call TogglePaste()<CR>
+inoremap <leader>p <Esc>:call TogglePaste()<CR>
 "-----------------------------------------------------------------------------------------
 "-----------------------------------------------------------------------------------------

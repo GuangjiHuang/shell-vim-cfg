@@ -207,3 +207,26 @@ if [ -f $mygithub_repo_path ]; then
 fi
 
 eval "$(thefuck --alias)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/data/guangji.huang/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/data/guangji.huang/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/data/guangji.huang/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/data/guangji.huang/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# source the cop_tool env
+source ~/opt/cop_md/cop-md/envsetup.sh
+function doc()
+{
+	cop_tool docx $1
+}
